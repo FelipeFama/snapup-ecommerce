@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500&display=swap');
+
+body {
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 1.2rem;
+}
+
+.navbar {
+  background-color: #91F598;
+}
+
+.quem-somos {
+  background-color: #927CE0;
+  color: #2471A3;
+  padding: 2rem;
+}
+
+.parceiros {
+  background-color: #7AE0D5;
+  color: #4A235A;
+}
+
+.bg-footer {
+  background-color: #000000;
+  color: #FFFFFF;
+}
