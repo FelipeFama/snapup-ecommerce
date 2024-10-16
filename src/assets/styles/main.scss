@@ -11,7 +11,7 @@
 }
 
 html {
-  font-size: 10px;
+  font-size: 62.5%;
 }
 
 body {
@@ -43,7 +43,14 @@ img {
 // liness
 .vert-line {
   width: 2px;
-  background-color: lighten($clr-orange, 10%);
+  background-color: adjust-color($clr-orange, $lightness: 10%);
   height: 16px;
   margin: 0 12px;
+}
+
+/* custom utility classes */
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 2rem;
 }

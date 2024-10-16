@@ -1,70 +1,73 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import Navbar from "./Navbar.vue";
+</script>
 
 <template>
   <header class="header text-white">
-    <div class="container">
-      <div class="header-cnt">
-        <div class="header-cnt-top fs-13 py-2 d-flex align-items-center justify-content-between">
-          <div class="header-cnt-top-l">
-            <ul class="d-flex top-links align-items-center">
-              <li>
-                <!-- Dummy links -->
-                <router-link to="/seller">Seller Center</router-link>
-              </li>
-              <li class="vert-line"></li>
-              <li>
-                <!-- Dummy links -->
-                <router-link to="/download">Download</router-link>
-              </li>
-              <li class="vert-line"></li>
-              <li class="d-flex align-items-center">
-                <span class="fs-13">Follow us on</span>
-                <ul class="social-links d-flex align-items-center">
-                  <li class="mx-2">
-                    <a href="https://www.facebook.com" class="fs-15">
-                      <i class="bi bi-facebook"></i>
-                    </a>
-                  </li>
-                  <li class="mx-2">
-                    <a href="https://www.instagram.com" class="fs-15">
-                      <i class="bi bi-instagram"></i>
-                    </a>
-                  </li>
-                </ul>
-              </li>
-            </ul>
-          </div>
-          <div class="header-cnt-top-r">
-            <ul class="top-links d-flex align-items-center">
-              <li>
-                <router-link to="/" class="top-link-itm">
-                  <span class="top-link-itm-ico mx-2">
-                    <i class="fa-solid fa-circle-question"></i>
-                  </span>
-                  <span class="top-link-itm-txt">Support</span>
-                </router-link>
-              </li>
-              <li class="vert-line"></li>
-              <li>
-                <router-link to="/">
-                  <span class="top-link-itm-txt">Register</span>
-                </router-link>
-              </li>
-              <li class="vert-line"></li>
-              <li>
-                <router-link to="/">
-                  <span class="top-link-itm-txt">Log in</span>
-                </router-link>
-              </li>
-            </ul>
-          </div>
-        </div>
+    <nav class="container">
+      <section class="header-cnt">
+        <!-- Top Section with links and social media -->
+        <section
+          class="header-cnt-top fs-13 py-2 d-flex align-items-center justify-content-between"
+        >
+          <!-- Left Side: Seller Center and Social Links -->
+          <ul class="d-flex top-links align-items-center">
+            <li class="fs-6">
+              <router-link to="/seller">Seller Center</router-link>
+            </li>
+            <li class="vert-line" aria-hidden="true"></li>
+            <li class="fs-6">
+              <router-link to="/download">Download</router-link>
+            </li>
+            <li class="vert-line" aria-hidden="true"></li>
+            <li class="d-flex align-items-center">
+              <span class="fs-6">Follow us on</span>
+              <ul class="social-links d-flex align-items-center" aria-label="Social Media Links">
+                <li class="mx-2">
+                  <a href="https://www.facebook.com" class="fs-6" aria-label="Facebook">
+                    <i class="bi bi-facebook"></i>
+                  </a>
+                </li>
+                <li class="mx-2">
+                  <a href="https://www.instagram.com" class="fs-6" aria-label="Instagram">
+                    <i class="bi bi-instagram"></i>
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
 
-        <div class="header-cnt-bottom">
+          <!-- Right Side: Support, Register, Log in -->
+          <ul class="top-links d-flex align-items-center">
+            <li>
+              <router-link to="/" class="top-link-itm">
+                <span class="top-link-itm-ico mx-2 fs-6">
+                  <i class="bi bi-question-circle-fill"></i>
+                </span>
+                <span class="top-link-itm-txt fs-6">Support</span>
+              </router-link>
+            </li>
+            <li class="vert-line" aria-hidden="true"></li>
+            <li>
+              <router-link to="/">
+                <span class="top-link-itm-txt fs-6">Register</span>
+              </router-link>
+            </li>
+            <li class="vert-line" aria-hidden="true"></li>
+            <li>
+              <router-link to="/">
+                <span class="top-link-itm-txt fs-6">Log in</span>
+              </router-link>
+            </li>
+          </ul>
+        </section>
+
+        <!-- Bottom Section: Navbar -->
+        <section class="header-cnt-bottom">
           <Navbar />
-        </div>
-      </div>
-    </div>
+        </section>
+      </section>
+    </nav>
   </header>
 </template>
 
@@ -76,7 +79,7 @@
   background: linear-gradient(180deg, rgba(249, 78, 48, 1) 0%, rgba(255, 100, 51, 1) 100%);
 
   .header-cnt-top {
-    border-bottom: 1px solid lighten($clr-orange, 10%);
+    border-bottom: 1px solid adjust-color($clr-orange, $lightness: 10%);
   }
 
   @media screen and (max-width: 992px) {
