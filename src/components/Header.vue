@@ -1,7 +1,3 @@
-<script setup lang="ts">
-import Navbar from "./Navbar.vue";
-</script>
-
 <template>
   <header class="header text-white">
     <nav class="container">
@@ -67,6 +63,10 @@ import Navbar from "./Navbar.vue";
     </nav>
   </header>
 </template>
+
+<script setup lang="ts">
+import Navbar from "./Navbar.vue";
+</script>
 
 <style lang="scss" scoped>
 @import "../assets/styles/main.scss";

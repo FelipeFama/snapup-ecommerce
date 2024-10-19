@@ -1,17 +1,15 @@
-<script setup lang="ts"></script>
-
 <template>
-  <nav class="navbar text-white">
+  <nav class="navbar">
     <section class="navbar-cnt flex align-center">
-      <aside class="brand-and-toggler flex align-center">
+      <aside class="brand-and-toggler flex align-center gap-1">
         <button class="sidebar-shown-btn text-white">
           <i class="bi bi-list"></i>
         </button>
-        <router-link to="/" class="navbar-brand flex align-center">
-          <span className="navbar-brand-ico">
-            <i className="bi bi-bag-dash-fill"></i>
+        <router-link to="/" class="navbar-brand flex align-center text-white">
+          <span class="navbar-brand-ico">
+            <i class="bi bi-bag-dash-fill"></i>
           </span>
-          <span className="navbar-brand-txt mx-2"> <span className="fw-7">Snap</span>Up. </span>
+          <span class="navbar-brand-txt mx-2"> <span className="fw-7">Snap</span>Up. </span>
         </router-link>
       </aside>
 
@@ -23,15 +21,31 @@
               class="form-control fs-14"
               placeholder="Search your preferred items here"
             />
+            <router-link to="/" class="text-white search-btn flex align-center justify-center">
+              <i class="bi bi-search"></i>
+            </router-link>
           </div>
         </article>
+        <ul class="navbar-nav flex align-center fs-12 fw-4 font-manrope">
+          <li class="nav-item no-wrap">
+            <router-link to="/" class="nav-link text-capitalize"> list products </router-link>
+          </li>
+        </ul>
+      </aside>
+      <aside class="navbar-cart flex align-center">
+        <router-link to="/" class="cart-btn">
+          <i className="bi bi-cart"></i>
+          <div className="cart-items-value">0</div>
+        </router-link>
       </aside>
     </section>
   </nav>
 </template>
 
+<script setup lang="ts"></script>
+
 <style lang="scss" scoped>
-@import "../assets/styles/variables.scss";
+@import "../assets/styles/main.scss";
 
 .navbar {
   padding-top: 12px;

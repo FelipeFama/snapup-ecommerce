@@ -58,6 +58,11 @@ select {
   resize: none;
   font-family: inherit;
   font-size: 1.6rem;
+  &:focus {
+    //outline: none;
+    //border: none;
+    box-shadow: none;
+  }
 }
 
 /* custom utility classes */
@@ -114,7 +119,7 @@ select {
   height: 100%;
 }
 .w-100 {
-  width: 100%;
+  width: 75.5vw !important
 }
 
 /* text align and transformation */
