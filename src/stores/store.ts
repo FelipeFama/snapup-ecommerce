@@ -1,15 +1,13 @@
-import { defineStore } from "pinia";
+// src/stores/index.ts
+import { useSidebarStore } from "./sidebarSlice";
 
-export const store = defineStore("mainStore", {
-  state: () => ({
-    sidebar: {}
-  }),
-  // Actions can be defined here to mutate state or perform operations
-  actions: {
-    // Example action to update sidebar state
-    updateSidebar(newState: {}) {
-      this.sidebar = newState;
-    }
-    // Add similar actions for category, product, cart, and search as needed
-  }
-});
+export { useSidebarStore };
+
+// Optionally, you can also export a function to initialize all stores
+export function useStores() {
+  const sidebarStore = useSidebarStore();
+
+  return {
+    sidebarStore
+  };
+}

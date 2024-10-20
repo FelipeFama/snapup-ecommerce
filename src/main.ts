@@ -9,7 +9,7 @@ import { createApp } from "vue";
 import { createPinia } from "pinia";
 
 //Routes
-import router from "./router";
+import { router } from "./router";
 
 import App from "./App.vue";
 

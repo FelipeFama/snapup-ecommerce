@@ -2,7 +2,7 @@
   <nav class="navbar">
     <section class="navbar-cnt flex align-center">
       <aside class="brand-and-toggler flex align-center gap-1">
-        <button class="sidebar-shown-btn text-white">
+        <button type="button" class="sidebar-shown-btn text-white" @click="setSideBarOn">
           <i class="bi bi-list"></i>
         </button>
         <router-link to="/" class="navbar-brand flex align-center text-white">
@@ -42,7 +42,16 @@
   </nav>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { useSidebarStore } from "@/stores/sidebarSlice";
+// Stores
+const sidebarStore = useSidebarStore();
+console.log(sidebarStore);
+// Sidebar actions
+const setSideBarOn = () => {
+  sidebarStore.setSidebarOn();
+};
+</script>
 
 <style lang="scss" scoped>
 @import "../assets/styles/main.scss";
