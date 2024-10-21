@@ -44,12 +44,20 @@
 
 <script setup lang="ts">
 import { useSidebarStore } from "@/stores/sidebarSlice";
-// Stores
+
+// Access the sidebar store
 const sidebarStore = useSidebarStore();
-console.log(sidebarStore);
-// Sidebar actions
+
+const temp = sidebarStore.isSidebarOn;
+console.log(temp);
+
+// Method to toggle sidebar and log its status
 const setSideBarOn = () => {
+  // Update the state (set isSidebarOn to true)
   sidebarStore.setSidebarOn();
+
+  // Log the updated value of isSidebarOn (expected to be true after the update)
+  console.log("After toggling, sidebar status:", sidebarStore.isSidebarOn); // Logs true
 };
 </script>
 
