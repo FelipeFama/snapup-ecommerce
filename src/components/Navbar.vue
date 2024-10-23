@@ -43,22 +43,23 @@
 </template>
 
 <script setup lang="ts">
-import { useSidebarStore } from "@/stores/sidebarSlice";
+import { useSidebarStore } from "@/stores/sidebarStore";
+import { useCategoryStore } from "@/stores/categoryStore";
+//import { computed, onMounted } from "vue";
 
 // Access the sidebar store
 const sidebarStore = useSidebarStore();
+const categoryStore = useCategoryStore();
 
-const temp = sidebarStore.isSidebarOn;
-console.log(temp);
 
 // Method to toggle sidebar and log its status
 const setSideBarOn = () => {
   // Update the state (set isSidebarOn to true)
   sidebarStore.setSidebarOn();
-
-  // Log the updated value of isSidebarOn (expected to be true after the update)
-  console.log("After toggling, sidebar status:", sidebarStore.isSidebarOn); // Logs true
 };
+
+const categories = categoryStore.categories;
+console.log(categories)
 </script>
 
 <style lang="scss" scoped>

@@ -16,7 +16,7 @@
 
 <script setup lang="ts">
 import { computed } from "vue";
-import { useSidebarStore } from "@/stores/sidebarSlice";
+import { useSidebarStore } from "@/stores/sidebarStore";
 
 const sidebarStore = useSidebarStore();
 
