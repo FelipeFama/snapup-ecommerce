@@ -27,8 +27,10 @@
           </div>
         </article>
         <ul class="navbar-nav flex align-center fs-12 fw-4 font-manrope">
-          <li class="nav-item no-wrap">
-            <router-link to="/" class="nav-link text-capitalize"> list products </router-link>
+          <li v-for="(category, idx) in categories.slice(0, 8)" :key="idx" class="nav-item no-wrap">
+            <router-link :to="`/category/${category.slug}`" class="nav-link text-capitalize">
+              {{ category.name.replace("-", "") }}
+            </router-link>
           </li>
         </ul>
       </aside>
@@ -45,21 +47,24 @@
 <script setup lang="ts">
 import { useSidebarStore } from "@/stores/sidebarStore";
 import { useCategoryStore } from "@/stores/categoryStore";
-//import { computed, onMounted } from "vue";
+import { computed, onMounted } from "vue";
 
 // Access the sidebar store
 const sidebarStore = useSidebarStore();
 const categoryStore = useCategoryStore();
-
 
 // Method to toggle sidebar and log its status
 const setSideBarOn = () => {
   // Update the state (set isSidebarOn to true)
   sidebarStore.setSidebarOn();
 };
+/**/
+onMounted(() => {
+  categoryStore.fetchCategories();
+});
 
-const categories = categoryStore.categories;
-console.log(categories)
+const categories = computed(() => categoryStore.categories);
+//console.log("Categories:", categories);
 </script>
 
 <style lang="scss" scoped>
@@ -112,6 +117,7 @@ console.log(categories)
       }
     }
     .navbar-nav {
+      flex-direction: row;
       margin-left: 32px;
       margin-top: 8px;
       .nav-item {
