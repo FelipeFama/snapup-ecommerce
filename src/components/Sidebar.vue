@@ -6,8 +6,10 @@
     <div class="sidebar-cnt">
       <div class="cat-title fs-17 text-uppercase fw-6 ls-1h">All Categories</div>
       <ul class="cat-list">
-        <li>
-          <router-link to="/" class="cat-list-link text-capitalize"> Category here </router-link>
+        <li v-for="(category, idx) in categories.slice(0, 8)" :key="idx">
+          <router-link :to="`/category/${category.slug}`" class="cat-list-link text-capitalize">
+            {{ category.name.replace("-", "") }}
+          </router-link>
         </li>
       </ul>
     </div>
@@ -15,13 +17,21 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from "vue";
 import { useSidebarStore } from "@/stores/sidebarStore";
+import { useCategoryStore } from "@/stores/categoryStore";
+import { computed, onMounted } from "vue";
 
 const sidebarStore = useSidebarStore();
+const categoryStore = useCategoryStore();
 
 const isSidebarOn = computed(() => sidebarStore.isSidebarOn);
 const setSidebarOff = sidebarStore.setSidebarOff;
+
+onMounted(() => {
+  categoryStore.fetchCategories();
+});
+
+const categories = computed(() => categoryStore.categories);
 </script>
 
 <style lang="scss" scoped>
