@@ -1,6 +1,10 @@
 <template>
-  <article id="carouselExampleInterval" class="carousel slide slider" data-bs-ride="carousel">
-    <div class="carousel-inner container">
+  <article
+    id="carouselExampleInterval"
+    class="carousel slide container slider"
+    data-bs-ride="carousel"
+  >
+    <div class="carousel-inner">
       <!-- Loop through the imported images array -->
       <figure
         v-for="(img, index) in sliderImgs"

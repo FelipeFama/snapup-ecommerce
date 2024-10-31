@@ -3,6 +3,17 @@
     <section class="slider-wrapper">
       <HeaderSlider />
     </section>
+    <section class="main-content bg-whitesmoke">
+      <div class="container">
+        <div class="categories py-5">
+          <div class="categories-item">
+            <div class="title-md">
+              <h3>See our products</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 </template>
 
