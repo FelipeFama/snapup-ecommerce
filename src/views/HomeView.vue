@@ -19,6 +19,16 @@
 
 <script setup lang="ts">
 import HeaderSlider from "@/components/HeaderSlider.vue";
+import { useProductStore } from "@/stores/productStore";
+import { onMounted } from "vue";
+/*
+const productStore = useProductStore();
+console.log(productStore);
+
+onMounted(async () => {
+  await productStore.fetchProducts(10);
+});
+*/
 </script>
 
 <style lang="scss" scoped>

@@ -1,6 +1,7 @@
 // src/stores/index.ts
 import { useSidebarStore } from "./sidebarStore";
 import { useCategoryStore } from "./categoryStore";
+import { useProductStore } from "./productStore";
 
 //export { useSidebarStore };
 
@@ -8,9 +9,11 @@ import { useCategoryStore } from "./categoryStore";
 export function useStores() {
   const sidebarStore = useSidebarStore();
   const categoryStore = useCategoryStore();
+  const productStore = useProductStore();
 
   return {
     sidebarStore,
-    categoryStore
+    categoryStore,
+    productStore
   };
 }
