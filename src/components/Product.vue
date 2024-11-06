@@ -25,7 +25,7 @@
 import { defineComponent, type PropType } from "vue";
 import { formatPrice } from "@/utils/helpers";
 
-interface Product {
+export interface Product {
   id: number;
   category: string;
   images: string[];
