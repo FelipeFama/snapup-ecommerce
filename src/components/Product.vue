@@ -14,7 +14,7 @@
         <div class="price flex align-center justify-center">
           <span class="old-price">{{ formatPrice(product?.price) }}</span>
           <span class="new-price">{{ formatPrice(product?.discountedPrice) }}</span>
-          <span class="discount fw-6">({{ product?.discountedPercentage }}% Off)</span>
+          <span class="discount fw-6">({{ product?.discountPercentage }}% Off)</span>
         </div>
       </div>
     </div>
@@ -24,23 +24,13 @@
 <script lang="ts">
 import { defineComponent, type PropType } from "vue";
 import { formatPrice } from "@/utils/helpers";
-
-export interface Product {
-  id: number;
-  category: string;
-  images: string[];
-  title: string;
-  brand: string;
-  price: number;
-  discountedPrice: number;
-  discountedPercentage: number;
-}
+import type { IProducts } from "@/types/IProducts";
 
 export default defineComponent({
   name: "Product",
   props: {
     product: {
-      type: Object as PropType<Product>,
+      type: Object as PropType<IProducts>,
       required: true
     }
   },

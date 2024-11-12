@@ -1,26 +1,37 @@
 <template>
+  <!--
+    -->
   <div class="product-lists grid bg-whitesmoke my-3">
-    <Product v-for="product in products" :key="product.id" :product="product" />
+    <Product v-for="product in productsWithDiscount" :key="product.id" :product="product" />
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { computed, defineComponent } from "vue";
 import Product from "@/components/Product.vue";
-import type { Product as ProductType } from "@/components/Product.vue";
+import type { IProducts } from "@/types/IProducts";
 
 export default defineComponent({
-  name: "HomePage",
+  name: "ProductList",
   components: {
     Product
   },
-  setup() {
-    const products: ProductType[] = [
-      // Your products data here
-    ];
+  props: {
+    products: {
+      type: Array as () => IProducts[],
+      required: true
+    }
+  },
+  setup(props) {
+    const productsWithDiscount = computed(() => {
+      return props.products.map((product) => ({
+        ...product,
+        discountedPrice: product.price - product.price * (product.discountPercentage / 100)
+      }));
+    });
 
     return {
-      products
+      productsWithDiscount
     };
   }
 });

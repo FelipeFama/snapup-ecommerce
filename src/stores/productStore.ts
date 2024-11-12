@@ -1,36 +1,23 @@
-export interface Product {
-  id: number;
-  title: string;
-  description: string;
-  price: number;
-  discountPercentage?: number;
-  rating?: number;
-  stock?: number;
-  brand: string;
-  category: string;
-  thumbnail: string;
-  images: string[];
-}
-
 // productStore.ts
 import { defineStore } from "pinia";
 import { ref, computed } from "vue";
 import { BASE_URL } from "@/utils/apiURL";
-import { STATUS } from "@/utils/status"; 
-//import type { Product } from "./types";
+import { STATUS } from "@/utils/status";
+import type { IProducts } from "@/types/IProducts";
 
 export const useProductStore = defineStore("product", () => {
   // State with type annotations
-  const products = ref<Product[]>([]);
-  const productsStatus = ref<typeof STATUS[keyof typeof STATUS]>(STATUS.IDLE);
-  const productSingle = ref<Product | null>(null);
-  const productSingleStatus = ref<typeof STATUS[keyof typeof STATUS]>(STATUS.IDLE);
+  const products = ref<IProducts[]>([]);
+  const productsStatus = ref<(typeof STATUS)[keyof typeof STATUS]>(STATUS.IDLE);
+  const productSingle = ref<IProducts | null>(null);
+  const productSingleStatus = ref<(typeof STATUS)[keyof typeof STATUS]>(STATUS.IDLE);
 
   // Actions
   const fetchProducts = async (limit: number): Promise<void> => {
     productsStatus.value = STATUS.LOADING;
     try {
       const response = await fetch(`${BASE_URL}products?limit=${limit}`);
+      console.log(response);
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
@@ -48,6 +35,7 @@ export const useProductStore = defineStore("product", () => {
     productSingleStatus.value = STATUS.LOADING;
     try {
       const response = await fetch(`${BASE_URL}products/${id}`);
+      console.log(response);
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
@@ -62,20 +50,24 @@ export const useProductStore = defineStore("product", () => {
   };
 
   // Typed getters using computed
-  const allProducts = computed((): Product[] => products.value);
-  const allProductsStatus = computed((): typeof STATUS[keyof typeof STATUS] => productsStatus.value);
-  const singleProduct = computed((): Product | null => productSingle.value);
-  const singleProductStatus = computed((): typeof STATUS[keyof typeof STATUS] => productSingleStatus.value);
-
-  // Additional utility getters
-  const isLoading = computed((): boolean =>
-    productsStatus.value === STATUS.LOADING || 
-    productSingleStatus.value === STATUS.LOADING
+  const allProducts = computed((): IProducts[] => products.value);
+  const allProductsStatus = computed(
+    (): (typeof STATUS)[keyof typeof STATUS] => productsStatus.value
+  );
+  const singleProduct = computed((): IProducts | null => productSingle.value);
+  const singleProductStatus = computed(
+    (): (typeof STATUS)[keyof typeof STATUS] => productSingleStatus.value
   );
 
-  const hasError = computed((): boolean =>
-    productsStatus.value === STATUS.FAILED || 
-    productSingleStatus.value === STATUS.FAILED
+  // Additional utility getters
+  const isLoading = computed(
+    (): boolean =>
+      productsStatus.value === STATUS.LOADING || productSingleStatus.value === STATUS.LOADING
+  );
+
+  const hasError = computed(
+    (): boolean =>
+      productsStatus.value === STATUS.FAILED || productSingleStatus.value === STATUS.FAILED
   );
 
   return {

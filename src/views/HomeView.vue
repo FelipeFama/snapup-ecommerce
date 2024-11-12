@@ -10,6 +10,9 @@
             <div class="title-md">
               <h3>See our products</h3>
             </div>
+            <!-- Conditionally render Loader or ProductList based on productStatus -->
+            <Loader v-if="productStatus === STATUS.LOADING" />
+            <ProductList v-else :products="products" />
           </div>
         </div>
       </div>
@@ -19,16 +22,23 @@
 
 <script setup lang="ts">
 import HeaderSlider from "@/components/HeaderSlider.vue";
+import Loader from "@/components/Loader.vue";
+import ProductList from "@/components/ProductList.vue";
 import { useProductStore } from "@/stores/productStore";
+import type { IProducts } from "@/types/IProducts";
+import { STATUS } from "@/utils/status";
 import { onMounted } from "vue";
 /*
+ */
 const productStore = useProductStore();
-console.log(productStore);
+//console.log(productStore);
 
 onMounted(async () => {
-  await productStore.fetchProducts(10);
+  await productStore.fetchProducts(50);
 });
-*/
+
+const productStatus = productStore.productsStatus;
+const products = productStore.products as IProducts[];
 </script>
 
 <style lang="scss" scoped>
