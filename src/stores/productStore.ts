@@ -1,6 +1,5 @@
 // productStore.ts
 import { defineStore } from "pinia";
-import { ref, computed } from "vue";
 import { BASE_URL } from "@/utils/apiURL";
 import { STATUS } from "@/utils/status";
 import type { IProducts } from "@/types/IProducts";
@@ -37,7 +36,7 @@ export const useProductStore = defineStore("product", {
       try {
         const response = await fetch(`${BASE_URL}products?limit=${limit}`);
         const data = await response.json();
-        console.log(data);
+        //console.log(data);
         this.products = data.products;
         this.productsStatus = STATUS.SUCCEEDED;
       } catch (error) {

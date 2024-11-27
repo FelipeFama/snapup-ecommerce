@@ -25,21 +25,18 @@ import HeaderSlider from "@/components/HeaderSlider.vue";
 import Loader from "@/components/Loader.vue";
 import ProductList from "@/components/ProductList.vue";
 import { useProductStore } from "@/stores/productStore";
-import type { IProducts } from "@/types/IProducts";
 import { STATUS } from "@/utils/status";
-import { onMounted } from "vue";
-/*
- */
-const productStore = useProductStore();
-//console.log(productStore);
+import { computed, onMounted } from "vue";
 
-//
+const productStore = useProductStore();
+
 onMounted(async () => {
-  await productStore.fetchProducts(50);
+  productStore.fetchProducts(50);
 });
 
 const productStatus = productStore.productsStatus;
-const products = productStore.products as IProducts[];
+
+const products = computed(() => productStore.products);
 </script>
 
 <style lang="scss" scoped>
