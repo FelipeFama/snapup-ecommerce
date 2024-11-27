@@ -34,9 +34,10 @@ onMounted(async () => {
   productStore.fetchProducts(50);
 });
 
-const productStatus = productStore.productsStatus;
-
 const products = computed(() => productStore.products);
+const productStatus = computed(() => productStore.productsStatus);
+
+
 </script>
 
 <style lang="scss" scoped>
