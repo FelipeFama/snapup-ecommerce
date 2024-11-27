@@ -33,6 +33,7 @@ import { onMounted } from "vue";
 const productStore = useProductStore();
 //console.log(productStore);
 
+//
 onMounted(async () => {
   await productStore.fetchProducts(50);
 });
