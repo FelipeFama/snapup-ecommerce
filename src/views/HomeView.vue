@@ -15,36 +15,16 @@
             <ProductList v-else :products="tempProducts" />
           </section>
 
-          <section class="categories-item">
+          <section
+            class="categories-item"
+            v-for="(products, index) in categoryProducts"
+            :key="categories[index]?.slug"
+          >
             <aside class="title-md">
-              <h3>{{ categories[0]?.name }}</h3>
+              <h3>{{ categories[index]?.name }}</h3>
             </aside>
             <Loader v-if="productStatus === STATUS.LOADING" />
-            <ProductList v-else :products="catProductsOne" />
-          </section>
-
-          <section class="categories-item">
-            <aside class="title-md">
-              <h3>{{ categories[1]?.name }}</h3>
-            </aside>
-            <Loader v-if="productStatus === STATUS.LOADING" />
-            <ProductList v-else :products="catProductsTwo" />
-          </section>
-
-          <section class="categories-item">
-            <aside class="title-md">
-              <h3>{{ categories[2]?.name }}</h3>
-            </aside>
-            <Loader v-if="productStatus === STATUS.LOADING" />
-            <ProductList v-else :products="catProductsThree" />
-          </section>
-
-          <section class="categories-item">
-            <aside class="title-md">
-              <h3>{{ categories[3]?.name }}</h3>
-            </aside>
-            <Loader v-if="productStatus === STATUS.LOADING" />
-            <ProductList v-else :products="catProductsFour" />
+            <ProductList v-else :products="products" />
           </section>
         </article>
       </div>
@@ -92,21 +72,11 @@ watch(products, (newProducts) => {
   }
 });
 
-let catProductsOne = products.value.filter(
-  (product) => product.category === categories.value[0].slug
-);
-console.log(catProductsOne)
-let catProductsTwo = products.value.filter(
-  (product) => product.category === categories.value[1].slug
-);
-
-let catProductsThree = products.value.filter(
-  (product) => product.category === categories.value[2].slug
-);
-
-let catProductsFour = products.value.filter(
-  (product) => product.category === categories.value[3].slug
-);
+const categoryProducts = computed<IProducts[][]>(() => {
+  return categories.value
+    .slice(0, 4)
+    .map((category) => products.value.filter((product) => product.category === category.slug));
+});
 </script>
 
 <style lang="scss" scoped>
