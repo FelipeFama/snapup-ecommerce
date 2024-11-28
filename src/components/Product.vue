@@ -1,23 +1,21 @@
 <template>
   <router-link :to="`/product/${product?.id}`" :key="product?.id" class="product-item bg-white">
-    <div>
-      <div class="category">{{ product?.category }}</div>
-      <div class="product-item-img">
-        <img class="img-cover" :src="product?.images[0]" :alt="product?.title" />
-      </div>
-      <div class="product-item-info fs-14">
-        <div class="brand">
-          <span>Brand: </span>
-          <span class="fw-7">{{ product?.brand }}</span>
-        </div>
-        <div class="title py-2">{{ product?.title }}</div>
-        <div class="price flex align-center justify-center">
-          <span class="old-price">{{ formatPrice(product?.price) }}</span>
-          <span class="new-price">{{ formatPrice(product?.discountedPrice) }}</span>
-          <span class="discount fw-6">({{ product?.discountPercentage }}% Off)</span>
-        </div>
-      </div>
-    </div>
+    <aside class="category">{{ product?.category }}</aside>
+    <figure class="product-item-img">
+      <img class="img-cover" :src="product?.images[0]" :alt="product?.title" />
+    </figure>
+    <article class="product-item-info fs-14">
+      <section class="brand">
+        <span>Brand: </span>
+        <span class="fw-7">{{ product?.brand }}</span>
+      </section>
+      <p class="title py-2">{{ product?.title }}</p>
+      <section class="price flex align-center justify-center">
+        <span class="old-price">{{ formatPrice(product?.price) }}</span>
+        <span class="new-price">{{ formatPrice(product?.discountedPrice) }}</span>
+        <span class="discount fw-6">({{ product?.discountPercentage }}% Off)</span>
+      </section>
+    </article>
   </router-link>
 </template>
 

@@ -1,9 +1,7 @@
 <template>
-  <!--
-    -->
-  <div class="product-lists grid bg-whitesmoke my-3">
+  <section class="product-lists grid bg-whitesmoke my-3">
     <Product v-for="product in productsWithDiscount" :key="product.id" :product="product" />
-  </div>
+  </section>
 </template>
 
 <script lang="ts">

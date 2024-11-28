@@ -58,7 +58,7 @@ const setSideBarOn = () => {
   // Update the state (set isSidebarOn to true)
   sidebarStore.setSidebarOn();
 };
-/**/
+
 onMounted(() => {
   categoryStore.fetchCategories();
 });

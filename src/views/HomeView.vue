@@ -5,16 +5,16 @@
     </section>
     <section class="main-content bg-whitesmoke">
       <div class="container">
-        <div class="categories py-5">
-          <div class="categories-item">
-            <div class="title-md">
+        <article class="categories py-5">
+          <section class="categories-item">
+            <aside class="title-md">
               <h3>See our products</h3>
-            </div>
+            </aside>
             <!-- Conditionally render Loader or ProductList based on productStatus -->
             <Loader v-if="productStatus === STATUS.LOADING" />
             <ProductList v-else :products="tempProducts" />
-          </div>
-        </div>
+          </section>
+        </article>
       </div>
     </section>
   </main>
