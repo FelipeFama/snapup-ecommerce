@@ -14,6 +14,38 @@
             <Loader v-if="productStatus === STATUS.LOADING" />
             <ProductList v-else :products="tempProducts" />
           </section>
+
+          <section class="categories-item">
+            <aside class="title-md">
+              <h3>{{ categories[0]?.name }}</h3>
+            </aside>
+            <Loader v-if="productStatus === STATUS.LOADING" />
+            <ProductList v-else :products="catProductsOne" />
+          </section>
+
+          <section class="categories-item">
+            <aside class="title-md">
+              <h3>{{ categories[1]?.name }}</h3>
+            </aside>
+            <Loader v-if="productStatus === STATUS.LOADING" />
+            <ProductList v-else :products="catProductsTwo" />
+          </section>
+
+          <section class="categories-item">
+            <aside class="title-md">
+              <h3>{{ categories[2]?.name }}</h3>
+            </aside>
+            <Loader v-if="productStatus === STATUS.LOADING" />
+            <ProductList v-else :products="catProductsThree" />
+          </section>
+
+          <section class="categories-item">
+            <aside class="title-md">
+              <h3>{{ categories[3]?.name }}</h3>
+            </aside>
+            <Loader v-if="productStatus === STATUS.LOADING" />
+            <ProductList v-else :products="catProductsFour" />
+          </section>
         </article>
       </div>
     </section>
@@ -24,23 +56,27 @@
 import HeaderSlider from "@/components/HeaderSlider.vue";
 import Loader from "@/components/Loader.vue";
 import ProductList from "@/components/ProductList.vue";
+import { useCategoryStore } from "@/stores/categoryStore";
 import { useProductStore } from "@/stores/productStore";
 import type { IProducts } from "@/types/IProducts";
 import { STATUS } from "@/utils/status";
 import { computed, onMounted, ref, watch } from "vue";
 
+const categorieStore = useCategoryStore();
 const productStore = useProductStore();
 
 onMounted(async () => {
+  categorieStore.fetchCategories();
   productStore.fetchProducts(50);
 });
 
+const categories = computed(() => categorieStore.categories);
 const products = computed(() => productStore.products);
 const productStatus = computed(() => productStore.productsStatus);
 
 //Randomizing the products in the list
 const tempProducts = ref<IProducts[]>([]);
-console.log(tempProducts);
+
 watch(products, (newProducts) => {
   if (newProducts.length > 0) {
     const randomizedProducts: IProducts[] = [];
@@ -55,6 +91,22 @@ watch(products, (newProducts) => {
     tempProducts.value = randomizedProducts;
   }
 });
+
+let catProductsOne = products.value.filter(
+  (product) => product.category === categories.value[0].slug
+);
+console.log(catProductsOne)
+let catProductsTwo = products.value.filter(
+  (product) => product.category === categories.value[1].slug
+);
+
+let catProductsThree = products.value.filter(
+  (product) => product.category === categories.value[2].slug
+);
+
+let catProductsFour = products.value.filter(
+  (product) => product.category === categories.value[3].slug
+);
 </script>
 
 <style lang="scss" scoped>
