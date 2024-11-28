@@ -36,7 +36,7 @@ const productStatus = computed(() => productStore.productsStatus);
 
 //Randomizing the products in the list
 const tempProducts = ref<IProducts[]>([]);
-//console.log(tempProducts)
+console.log(tempProducts)
 watch(products, (newProducts) => {
   if (newProducts.length > 0) {
     const randomizedProducts: IProducts[] = [];

@@ -7,7 +7,7 @@
     <article class="product-item-info fs-14">
       <section class="brand">
         <span>Brand: </span>
-        <span class="fw-7">{{ product?.brand }}</span>
+        <span class="fw-7">{{ product?.brand || product?.category }}</span>
       </section>
       <p class="title py-2">{{ product?.title }}</p>
       <section class="price flex align-center justify-center">
