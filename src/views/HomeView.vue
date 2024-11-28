@@ -31,12 +31,16 @@ import { computed, onMounted, ref, watch } from "vue";
 
 const productStore = useProductStore();
 
+onMounted(async () => {
+  productStore.fetchProducts(50);
+});
+
 const products = computed(() => productStore.products);
 const productStatus = computed(() => productStore.productsStatus);
 
 //Randomizing the products in the list
 const tempProducts = ref<IProducts[]>([]);
-console.log(tempProducts)
+console.log(tempProducts);
 watch(products, (newProducts) => {
   if (newProducts.length > 0) {
     const randomizedProducts: IProducts[] = [];
@@ -50,10 +54,6 @@ watch(products, (newProducts) => {
     }
     tempProducts.value = randomizedProducts;
   }
-});
-
-onMounted(async () => {
-  productStore.fetchProducts(50);
 });
 </script>
 

@@ -123,7 +123,7 @@ export default defineComponent({
         font-size: 13px;
         font-weight: 600;
         font-family: $font-family-poppins;
-        color: darken($clr-orange, 5%);
+        color: adjust-color($clr-orange, $blackness: 5%);
       }
 
       &::after {
@@ -131,7 +131,7 @@ export default defineComponent({
         position: absolute;
         top: calc(100% + 6px);
         height: 1px;
-        background-color: lighten($clr-orange, 10%);
+        background-color: adjust-color($clr-orange, $lightness: 10%);
         width: 60px;
       }
     }
