@@ -1,6 +1,6 @@
 <template>
   <aside :class="['sidebar', { 'hide-sidebar': isSidebarOn }]">
-    <button type="button" class="sidebar-hide-btn" @click="setSidebarOff">
+    <button aria-label="sidebar" type="button" class="sidebar-hide-btn" @click="setSidebarOff">
       <i class="bi bi-x"></i>
     </button>
     <div class="sidebar-cnt">

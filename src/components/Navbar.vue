@@ -2,7 +2,7 @@
   <nav class="navbar">
     <section class="navbar-cnt flex align-center">
       <aside class="brand-and-toggler flex align-center gap-1">
-        <button type="button" class="sidebar-shown-btn text-white" @click="setSideBarOn">
+        <button aria-label="sidebar" class="sidebar-shown-btn text-white p-2" @click="setSideBarOn">
           <i class="bi bi-list"></i>
         </button>
         <router-link to="/" class="navbar-brand flex align-center text-white">
@@ -21,7 +21,7 @@
               class="form-control fs-14"
               placeholder="Search your preferred items here"
             />
-            <router-link to="/" class="text-white search-btn flex align-center justify-center">
+            <router-link aria-label="search" to="/" class="text-white search-btn flex align-center justify-center">
               <i class="bi bi-search"></i>
             </router-link>
           </div>

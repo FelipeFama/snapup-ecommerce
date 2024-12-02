@@ -17,12 +17,12 @@
                 <span class="fs-13">Follow us on</span>
                 <ul class="social-links flex align-center">
                   <li class="mx-2">
-                    <a href="www.facebook.com" class="fs-15">
+                    <a aria-label="facebook" href="www.facebook.com" class="fs-15">
                       <i class="bi bi-facebook"></i>
                     </a>
                   </li>
                   <li class="mx-2">
-                    <a href="www.instagram.com" class="fs-15">
+                    <a aria-label="instagram" href="www.instagram.com" class="fs-15">
                       <i class="bi bi-instagram"></i>
                     </a>
                   </li>
