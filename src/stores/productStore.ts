@@ -8,7 +8,7 @@ export const useProductStore = defineStore("product", {
   state: () => ({
     products: [] as IProducts[],
     productsStatus: STATUS.IDLE as string,
-    productSingle: null as IProducts | null,
+    productSingle: {} as IProducts,
     productSingleStatus: STATUS.IDLE as string
   }),
   getters: {
@@ -18,7 +18,7 @@ export const useProductStore = defineStore("product", {
     allProductsStatus(state): string {
       return state.productsStatus;
     },
-    singleProduct(state): IProducts | null {
+    singleProduct(state): IProducts {
       return state.productSingle;
     },
     isLoading(state): boolean {
@@ -44,11 +44,12 @@ export const useProductStore = defineStore("product", {
         this.productsStatus = STATUS.FAILED;
       }
     },
-    async fetchProductSingle(id: number) {
+    async fetchProductSingle(id: number | string) {
       this.productSingleStatus = STATUS.LOADING;
       try {
         const response = await fetch(`${BASE_URL}products/${id}`);
         const data = await response.json();
+        //console.group(data)
         this.productSingle = data;
         this.productSingleStatus = STATUS.SUCCEEDED;
       } catch (error) {

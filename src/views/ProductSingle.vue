@@ -10,13 +10,25 @@ import { STATUS } from "@/utils/status";
 import { formatPrice } from "@/utils/helpers";
 import Loader from "@/components/Loader.vue";
 import { useRoute } from "vue-router";
+import { computed, onMounted } from "vue";
 
 const route = useRoute();
 
 const id = route.params.id as string;
-console.log(id)
-
 const productStore = useProductStore();
+const product = computed(() => productStore.productSingle);
+const productStatus = computed(() => productStore.productSingleStatus);
+
+onMounted(async () => {
+  productStore.fetchProductSingle(id);
+});
+
+let discountedPrice =
+  product.value.price - product.value.price * (product.value.discountPercentage / 100);
+
+ console.log(discountedPrice) 
+
+//console.log(product);
 </script>
 
 <style lang="scss" scoped>
