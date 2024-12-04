@@ -1,6 +1,19 @@
 <template>
-  <main class="about">
-    <h1>This an product page</h1>
+  <main class="py-5 bg-whitesmoke">
+    <Loader v-if="productStatus === STATUS.LOADING" />
+    <section class="product-single">
+      <div class="container">
+        <article class="product-single-content bg-white grid">
+          <section class="product-single-l">
+            <article class="product-img">
+              <figure class="product-img-zoom">
+                <img :src="product?.images?.[0] || ''" :alt="product?.title || 'Product image'" />
+              </figure>
+            </article>
+          </section>
+        </article>
+      </div>
+    </section>
   </main>
 </template>
 
@@ -23,10 +36,10 @@ onMounted(async () => {
   productStore.fetchProductSingle(id);
 });
 
-let discountedPrice =
-  product.value.price - product.value.price * (product.value.discountPercentage / 100);
-
- console.log(discountedPrice) 
+let discountedPrice = computed(() => {
+  return product.value.price - product.value.price * (product.value.discountPercentage / 100);
+});
+console.log(discountedPrice.value);
 
 //console.log(product);
 </script>
