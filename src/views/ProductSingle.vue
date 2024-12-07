@@ -13,6 +13,15 @@
                   class="img-cover"
                 />
               </figure>
+              <section class="product-img-thumbs flex align-center my-2">
+                <figure class="thumb-item">
+                  <img
+                    :src="product?.images?.[1] || ''"
+                    :alt="product?.title || 'Product image'"
+                    class="img-cover"
+                  />
+                </figure>
+              </section>
             </article>
           </section>
         </article>
@@ -43,9 +52,6 @@ onMounted(async () => {
 let discountedPrice = computed(() => {
   return product.value.price - product.value.price * (product.value.discountPercentage / 100);
 });
-console.log(discountedPrice.value);
-
-//console.log(product);
 </script>
 
 <style lang="scss" scoped>

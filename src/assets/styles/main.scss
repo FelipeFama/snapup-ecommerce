@@ -119,7 +119,10 @@ select {
   height: 100%;
 }
 .w-100 {
-  width: 75.5vw !important
+  width: 74.5vw !important;
+  @media screen and (max-width: 1024px) {
+    width: 72.2vw !important;
+  }
 }
 
 /* text align and transformation */
