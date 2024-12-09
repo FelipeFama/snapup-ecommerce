@@ -14,10 +14,47 @@
                 />
               </figure>
               <section class="product-img-thumbs flex align-center my-2">
-                <figure class="thumb-item">
-                  <img
+                <!--
+                  <figure class="thumb-item">
+                    <img
                     :src="product?.images?.[1] || ''"
                     :alt="product?.title || 'Product image'"
+                    class="img-cover"
+                    />
+                  </figure>
+                  <figure class="thumb-item">
+                    <img
+                    :src="product?.images?.[2] || ''"
+                    :alt="product?.title || 'Product image'"
+                    class="img-cover"
+                    />
+                  </figure>
+                  <figure class="thumb-item">
+                    <img
+                    :src="product?.images?.[2] || ''"
+                    :alt="product?.title || 'Product image'"
+                    class="img-cover"
+                    />
+                  </figure>
+                  <figure class="thumb-item">
+                    <img
+                    :src="product?.images?.[3] || ''"
+                    :alt="product?.title || 'Product image'"
+                    class="img-cover"
+                    />
+                  </figure>
+                  <figure class="thumb-item">
+                    <img
+                    :src="product?.images?.[4] || ''"
+                    :alt="product?.title || 'Product image'"
+                    class="img-cover"
+                    />
+                  </figure>
+                  -->
+                <figure v-for="(thumb, index) in thumbItems" :key="index" class="thumb-item">
+                  <img
+                    :src="thumb"
+                    :alt="product?.title || 'Product thumbnail image'"
                     class="img-cover"
                   />
                 </figure>
@@ -37,6 +74,7 @@ import { formatPrice } from "@/utils/helpers";
 import Loader from "@/components/Loader.vue";
 import { useRoute } from "vue-router";
 import { computed, onMounted } from "vue";
+//import type { IProducts } from "@/types/IProducts";
 
 const route = useRoute();
 
@@ -48,6 +86,11 @@ const productStatus = computed(() => productStore.productSingleStatus);
 onMounted(async () => {
   productStore.fetchProductSingle(id);
 });
+
+const thumbItems = computed(() => {
+  return product.value?.images?.slice(1, 4) || [];
+});
+console.log(thumbItems.value);
 
 let discountedPrice = computed(() => {
   return product.value.price - product.value.price * (product.value.discountPercentage / 100);
