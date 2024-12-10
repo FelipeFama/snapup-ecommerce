@@ -14,43 +14,6 @@
                 />
               </figure>
               <section class="product-img-thumbs flex align-center my-2">
-                <!--
-                  <figure class="thumb-item">
-                    <img
-                    :src="product?.images?.[1] || ''"
-                    :alt="product?.title || 'Product image'"
-                    class="img-cover"
-                    />
-                  </figure>
-                  <figure class="thumb-item">
-                    <img
-                    :src="product?.images?.[2] || ''"
-                    :alt="product?.title || 'Product image'"
-                    class="img-cover"
-                    />
-                  </figure>
-                  <figure class="thumb-item">
-                    <img
-                    :src="product?.images?.[2] || ''"
-                    :alt="product?.title || 'Product image'"
-                    class="img-cover"
-                    />
-                  </figure>
-                  <figure class="thumb-item">
-                    <img
-                    :src="product?.images?.[3] || ''"
-                    :alt="product?.title || 'Product image'"
-                    class="img-cover"
-                    />
-                  </figure>
-                  <figure class="thumb-item">
-                    <img
-                    :src="product?.images?.[4] || ''"
-                    :alt="product?.title || 'Product image'"
-                    class="img-cover"
-                    />
-                  </figure>
-                  -->
                 <figure v-for="(thumb, index) in thumbItems" :key="index" class="thumb-item">
                   <img
                     :src="thumb"
@@ -59,6 +22,31 @@
                   />
                 </figure>
               </section>
+            </article>
+          </section>
+
+          <section class="product-single-r">
+            <article class="product-details font-manrope">
+              <h3 class="title fs-20 fw-5">{{ product?.title }}</h3>
+              <p class="para fw-3 fs-15">{{ product?.description }}</p>
+              <aside class="info d-flex align-items-center fs-14">
+                <div class="rating d-flex align-items-center">
+                  <h6 class="text-orange fw-5">Rating:</h6>
+                  <span class="mx-1">{{ product?.rating }}</span>
+                </div>
+                <div class="vert-line"></div>
+                <div class="brand d-flex align-items-center">
+                  <h6 class="text-orange fw-5">Brand:</h6>
+                  <span class="mx-1">{{ product?.brand || product?.category }}</span>
+                </div>
+                <div class="vert-line"></div>
+                <div class="brand d-flex align-items-center">
+                  <h6 class="text-orange fw-5">Category:</h6>
+                  <span class="mx-1 text-capitalize">
+                    {{ product?.category ? product?.category.replace("-", " ") : "" }}
+                  </span>
+                </div>
+              </aside>
             </article>
           </section>
         </article>
@@ -90,7 +78,6 @@ onMounted(async () => {
 const thumbItems = computed(() => {
   return product.value?.images?.slice(1, 4) || [];
 });
-console.log(thumbItems.value);
 
 let discountedPrice = computed(() => {
   return product.value.price - product.value.price * (product.value.discountPercentage / 100);
