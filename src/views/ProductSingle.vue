@@ -1,7 +1,7 @@
 <template>
   <main class="py-5 bg-whitesmoke">
     <Loader v-if="productStatus === STATUS.LOADING" />
-    <section class="product-single">
+    <section class="product-single" v-else>
       <div class="container">
         <article class="product-single-content bg-white grid">
           <section class="product-single-l">
@@ -64,6 +64,34 @@
                   </p>
                 </div>
               </aside>
+
+              <aside class="qty d-flex align-items-center my-4">
+                <h6 class="qty-text">Quantity:</h6>
+                <div class="qty-change flex align-items-center mx-3">
+                  <button class="qty-decrease d-flex align-items-center justify-content-center">
+                    <i class="bi bi-dash"></i>
+                  </button>
+                  <div className="qty-value flex align-center justify-center">{{}}</div>
+                  <button class="qty-decrease d-flex align-items-center justify-content-center">
+                    <i class="bi bi-plus"></i>
+                  </button>
+                </div>
+                <div
+                  v-if="outOfStock"
+                  class="qty-error text-uppercase bg-danger text-white fs-12 ls-1 mx-2 fw-5"
+                >
+                  out of stock
+                </div>
+              </aside>
+              <aside class="btns">
+                <button type="button" class="add-to-cart-btn  btn">
+                  <i class="bi bi-cart-fill"></i>
+                  <span class="btn-text mx-2">add to cart</span>
+                </button>
+                <button type="button" className="buy-now btn mx-3">
+                  <span className="btn-text">buy now</span>
+                </button>
+              </aside>
             </article>
           </section>
         </article>
@@ -98,6 +126,10 @@ const thumbItems = computed(() => {
 
 let discountedPrice = computed(() => {
   return product.value.price - product.value.price * (product.value.discountPercentage / 100);
+});
+
+let outOfStock = computed(() => {
+  return product.value.stock === 0 || "";
 });
 </script>
 
