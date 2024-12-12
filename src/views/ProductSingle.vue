@@ -47,6 +47,14 @@
                   </span>
                 </div>
               </aside>
+
+              <aside class="price">
+                <div class="d-flex align-items-center">
+                  <p class="old-price text-gray">
+                    {{ formatPrice(product?.price) }}
+                  </p>
+                </div>
+              </aside>
             </article>
           </section>
         </article>
