@@ -53,6 +53,15 @@
                   <p class="old-price text-gray">
                     {{ formatPrice(product?.price) }}
                   </p>
+                  <p class="fs-14 mx-2 text-dark">Inclusive of all taxes</p>
+                </div>
+                <div class="d-flex align-items-center my-1">
+                  <p class="new-price fw-5 font-poppins fs-24 text-orange">
+                    {{ formatPrice(discountedPrice) }}
+                  </p>
+                  <p class="discount bg-orange fs-13 text-white fw-6 font-poppins">
+                    {{ product?.discountPercentage }}% OFF
+                  </p>
                 </div>
               </aside>
             </article>

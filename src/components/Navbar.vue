@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar">
+  <nav class="navbar d-block">
     <section class="navbar-cnt flex align-center">
       <aside class="brand-and-toggler flex align-center gap-1">
         <button aria-label="sidebar" class="sidebar-shown-btn text-white p-2" @click="setSideBarOn">
