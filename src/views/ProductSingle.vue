@@ -68,11 +68,17 @@
               <aside class="qty d-flex align-items-center my-4">
                 <h6 class="qty-text">Quantity:</h6>
                 <div class="qty-change flex align-items-center mx-3">
-                  <button class="qty-decrease d-flex align-items-center justify-content-center">
+                  <button
+                    class="qty-decrease d-flex align-items-center justify-content-center"
+                    @click="decreaseQty()"
+                  >
                     <i class="bi bi-dash"></i>
                   </button>
-                  <div className="qty-value flex align-center justify-center">{{}}</div>
-                  <button class="qty-decrease d-flex align-items-center justify-content-center">
+                  <div className="qty-value flex align-center justify-center">{{ quantity }}</div>
+                  <button
+                    class="qty-decrease d-flex align-items-center justify-content-center"
+                    @click="increaseQty()"
+                  >
                     <i class="bi bi-plus"></i>
                   </button>
                 </div>
@@ -84,7 +90,7 @@
                 </div>
               </aside>
               <aside class="btns">
-                <button type="button" class="add-to-cart-btn  btn">
+                <button type="button" class="add-to-cart-btn btn">
                   <i class="bi bi-cart-fill"></i>
                   <span class="btn-text mx-2">add to cart</span>
                 </button>
@@ -106,7 +112,7 @@ import { STATUS } from "@/utils/status";
 import { formatPrice } from "@/utils/helpers";
 import Loader from "@/components/Loader.vue";
 import { useRoute } from "vue-router";
-import { computed, onMounted } from "vue";
+import { computed, onMounted, ref } from "vue";
 //import type { IProducts } from "@/types/IProducts";
 
 const route = useRoute();
@@ -115,6 +121,7 @@ const id = route.params.id as string;
 const productStore = useProductStore();
 const product = computed(() => productStore.productSingle);
 const productStatus = computed(() => productStore.productSingleStatus);
+const quantity = ref(1);
 
 onMounted(async () => {
   productStore.fetchProductSingle(id);
@@ -131,6 +138,17 @@ let discountedPrice = computed(() => {
 let outOfStock = computed(() => {
   return product.value.stock === 0 || "";
 });
+
+// Increase quantity
+const increaseQty = () => {
+  const maxStock = product.value?.stock ?? Infinity;
+  return (quantity.value = Math.min(quantity.value + 1, maxStock));
+};
+
+// Decrease quantity
+const decreaseQty = () => {
+  return (quantity.value = Math.max(quantity.value - 1, 1));
+};
 </script>
 
 <style lang="scss" scoped>
