@@ -2,9 +2,9 @@
   <header class="header text-white">
     <nav class="container">
       <div class="header-cnt">
-        <section class="header-cnt-top fs-13 py-2 flex align-center justify-between">
+        <section class="header-cnt-top fs-13 py-2 d-flex align-items-center justify-content-between">
           <aside class="header-cnt-top-l">
-            <ul class="flex top-links align-center">
+            <ul class="d-flex top-links align-items-center">
               <li>
                 <router-link to="/seller">Seller Center</router-link>
               </li>
@@ -13,9 +13,9 @@
                 <router-link to="/download">Download</router-link>
               </li>
               <li class="vert-line"></li>
-              <li class="flex align-center">
+              <li class="d-flex align-items-center">
                 <span class="fs-13">Follow us on</span>
-                <ul class="social-links flex align-center">
+                <ul class="social-links d-flex align-items-center">
                   <li class="mx-2">
                     <a aria-label="facebook" href="www.facebook.com" class="fs-15">
                       <i class="bi bi-facebook"></i>
