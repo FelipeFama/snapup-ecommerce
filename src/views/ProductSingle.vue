@@ -13,7 +13,7 @@
                   class="img-cover"
                 />
               </figure>
-              <section class="product-img-thumbs flex align-center my-2">
+              <section class="product-img-thumbs d-flex align-items-center my-2">
                 <figure v-for="(thumb, index) in thumbItems" :key="index" class="thumb-item">
                   <img
                     :src="thumb"
@@ -67,14 +67,16 @@
 
               <aside class="qty d-flex align-items-center my-4">
                 <h6 class="qty-text">Quantity:</h6>
-                <div class="qty-change flex align-items-center mx-3">
+                <div class="qty-change d-flex align-items-center mx-3">
                   <button
                     class="qty-decrease d-flex align-items-center justify-content-center"
                     @click="decreaseQty()"
                   >
                     <i class="bi bi-dash"></i>
                   </button>
-                  <div className="qty-value flex align-center justify-center">{{ quantity }}</div>
+                  <div className="qty-value d-flex align-items-center justify-content-center">
+                    {{ quantity }}
+                  </div>
                   <button
                     class="qty-decrease d-flex align-items-center justify-content-center"
                     @click="increaseQty()"
