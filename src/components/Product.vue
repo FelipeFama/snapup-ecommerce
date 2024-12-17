@@ -10,7 +10,7 @@
         <span class="fw-7">{{ product?.brand || product?.category }}</span>
       </section>
       <p class="title py-2">{{ product?.title }}</p>
-      <section class="price flex align-center justify-center">
+      <section class="price d-flex align-items-center justify-content-center">
         <span class="old-price">{{ formatPrice(product?.price) }}</span>
         <span class="new-price">{{ formatPrice(product?.discountedPrice) }}</span>
         <span class="discount fw-6">({{ product?.discountPercentage }}% Off)</span>

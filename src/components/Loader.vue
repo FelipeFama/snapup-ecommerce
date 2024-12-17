@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <div class="loader flex justify-center align-center">
+    <div class="loader d-flex justify-content-center align-items-center">
       <img :src="loader" alt="Loading..." />
     </div>
   </div>

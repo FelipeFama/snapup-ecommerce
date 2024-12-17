@@ -31,7 +31,7 @@
             </ul>
           </aside>
           <aside class="header-cnt-top-r">
-            <ul class="top-links flex align-center">
+            <ul class="top-links d-flex align-items-center">
               <li>
                 <router-link to="/" class="top-link-itm">
                   <span class="top-link-itm-ico mx-2">

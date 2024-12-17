@@ -1,11 +1,11 @@
 <template>
   <nav class="navbar d-block">
-    <section class="navbar-cnt flex align-center">
-      <aside class="brand-and-toggler flex align-center gap-1">
+    <section class="navbar-cnt d-flex align-items-center">
+      <aside class="brand-and-toggler d-flex align-items-center gap-1">
         <button aria-label="sidebar" class="sidebar-shown-btn text-white p-2" @click="setSideBarOn">
           <i class="bi bi-list"></i>
         </button>
-        <router-link to="/" class="navbar-brand flex align-center text-white">
+        <router-link to="/" class="navbar-brand d-flex align-items-center text-white">
           <span class="navbar-brand-ico">
             <i class="bi bi-bag-dash-fill"></i>
           </span>
@@ -15,18 +15,22 @@
 
       <aside class="navbar-collapse w-100">
         <article class="navbar-search bg-white">
-          <div class="flex align-center">
+          <div class="d-flex align-items-center">
             <input
               type="text"
               class="form-control fs-14"
               placeholder="Search your preferred items here"
             />
-            <router-link aria-label="search" to="/" class="text-white search-btn flex align-center justify-center">
+            <router-link
+              aria-label="search"
+              to="/"
+              class="text-white search-btn d-flex align-items-center justify-content-center"
+            >
               <i class="bi bi-search"></i>
             </router-link>
           </div>
         </article>
-        <ul class="navbar-nav flex align-center fs-12 fw-4 font-manrope">
+        <ul class="navbar-nav d-flex align-items-center fs-12 fw-4 font-manrope">
           <li v-for="(category, idx) in categories.slice(0, 8)" :key="idx" class="nav-item no-wrap">
             <router-link :to="`/category/${category.slug}`" class="nav-link text-capitalize">
               {{ category.name.replace("-", "") }}
@@ -34,7 +38,7 @@
           </li>
         </ul>
       </aside>
-      <aside class="navbar-cart flex align-center">
+      <aside class="navbar-cart d-flex align-items-center">
         <router-link to="/" class="cart-btn">
           <i className="bi bi-cart"></i>
           <div className="cart-items-value">0</div>

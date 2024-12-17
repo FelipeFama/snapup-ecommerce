@@ -1,7 +1,7 @@
 <template>
   <footer class="footer bg-orange">
     <div class="container py-4 text-center">
-      <div class="flex align-center justify-center text-white fw-3 fs-14">
+      <div class="d-flex align-items-center justify-content-center text-white fw-3 fs-14">
         <RouterLink to="/" class="text-uppercase">privacy policy</RouterLink>
         <div class="vert-line"></div>
         <RouterLink to="/" class="text-uppercase">term of service</RouterLink>
