@@ -2,7 +2,7 @@
   <header class="header text-white">
     <nav class="container">
       <div class="header-cnt">
-        <section class="header-cnt-top fs-13 py-2 d-flex align-items-center justify-content-between">
+        <section class="header-cnt-top fs-6 py-2 d-flex align-items-center justify-content-between">
           <aside class="header-cnt-top-l">
             <ul class="d-flex top-links align-items-center">
               <li>
@@ -14,15 +14,15 @@
               </li>
               <li class="vert-line"></li>
               <li class="d-flex align-items-center">
-                <span class="fs-13">Follow us on</span>
+                <span class="fs-6">Follow us on</span>
                 <ul class="social-links d-flex align-items-center">
                   <li class="mx-2">
-                    <a aria-label="facebook" href="www.facebook.com" class="fs-15">
+                    <a aria-label="facebook" href="www.facebook.com" class="fs-5">
                       <i class="bi bi-facebook"></i>
                     </a>
                   </li>
                   <li class="mx-2">
-                    <a aria-label="instagram" href="www.instagram.com" class="fs-15">
+                    <a aria-label="instagram" href="www.instagram.com" class="fs-5">
                       <i class="bi bi-instagram"></i>
                     </a>
                   </li>

@@ -4,7 +4,7 @@
     <figure class="product-item-img">
       <img class="img-cover" :src="product?.images[0]" :alt="product?.title" />
     </figure>
-    <article class="product-item-info fs-14">
+    <article class="product-item-info fs-6">
       <section class="brand">
         <span>Brand: </span>
         <span class="fw-7">{{ product?.brand || product?.category }}</span>

@@ -9,7 +9,7 @@
           <span class="navbar-brand-ico">
             <i class="bi bi-bag-dash-fill"></i>
           </span>
-          <span class="navbar-brand-txt mx-2"> <span className="fw-7">Snap</span>Up. </span>
+          <span class="navbar-brand-txt mx-2"> <span className="fw-bold">Snap</span>Up. </span>
         </router-link>
       </aside>
 
@@ -18,7 +18,7 @@
           <div class="d-flex align-items-center">
             <input
               type="text"
-              class="form-control fs-14"
+              class="form-control fs-6"
               placeholder="Search your preferred items here"
             />
             <router-link
@@ -30,7 +30,7 @@
             </router-link>
           </div>
         </article>
-        <ul class="navbar-nav d-flex align-items-center fs-12 fw-4 font-manrope">
+        <ul class="navbar-nav d-flex align-items-center fs-6 fw-normal font-manrope">
           <li v-for="(category, idx) in categories.slice(0, 8)" :key="idx" class="nav-item no-wrap">
             <router-link :to="`/category/${category.slug}`" class="nav-link text-capitalize">
               {{ category.name.replace("-", "") }}

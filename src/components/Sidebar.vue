@@ -4,7 +4,7 @@
       <i class="bi bi-x"></i>
     </button>
     <div class="sidebar-cnt">
-      <div class="cat-title fs-17 text-uppercase fw-6 ls-1h">All Categories</div>
+      <div class="cat-title fs-5 text-uppercase fw-6 ls-1h">All Categories</div>
       <ul class="cat-list">
         <li v-for="(category, idx) in categories" :key="idx">
           <router-link :to="`/category/${category.slug}`" class="cat-list-link text-capitalize">
