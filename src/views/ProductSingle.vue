@@ -92,7 +92,11 @@
                 </div>
               </aside>
               <aside class="btns">
-                <button type="button" class="add-to-cart-btn btn">
+                <button
+                  type="button"
+                  class="add-to-cart-btn btn"
+                  @click="addToCartHandler(product)"
+                >
                   <i class="bi bi-cart-fill"></i>
                   <span class="btn-text mx-2">add to cart</span>
                 </button>
@@ -115,12 +119,14 @@ import { formatPrice } from "@/utils/helpers";
 import Loader from "@/components/Loader.vue";
 import { useRoute } from "vue-router";
 import { computed, onMounted, ref } from "vue";
+import { useCartStore } from "@/stores/cartStore";
 //import type { IProducts } from "@/types/IProducts";
 
 const route = useRoute();
 
 const id = route.params.id as string;
 const productStore = useProductStore();
+const cartStore = useCartStore();
 const product = computed(() => productStore.productSingle);
 const productStatus = computed(() => productStore.productSingleStatus);
 const quantity = ref(1);
@@ -150,6 +156,22 @@ const increaseQty = () => {
 // Decrease quantity
 const decreaseQty = () => {
   return (quantity.value = Math.max(quantity.value - 1, 1));
+};
+
+// Add to Cart Handler
+const addToCartHandler = (product: any) => {
+  // Calculate discounted price
+  const discountedPrice = product.price - (product.price * (product.discountPercentage / 100));
+  // Calculate total price based on quantity
+  const totalPrice = quantity.value * discountedPrice;
+
+  // Add to cart using Pinia store
+  cartStore.addToCart({
+    ...product,
+    quantity: quantity.value,
+    discountedPrice,
+    totalPrice
+  });
 };
 </script>
 
