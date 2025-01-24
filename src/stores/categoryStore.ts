@@ -7,12 +7,27 @@ export const useCategoryStore = defineStore("category", {
   state: () => ({
     categories: [] as ICategory[],  
     categoriesStatus: STATUS.IDLE as string,
-    categoryProducts: [],
+    categoryProducts: [] as ICategory[],
     categoryProductsStatus: STATUS.IDLE as string
   }),
+  getters: {
+    getCategories(): ICategory[] {
+      return this.categories;
+    },
+    getCategoriesStatus(): string {
+      return this.categoriesStatus = STATUS.LOADING;
+    },
+    getCategoryProducts(): ICategory[] {
+      return this.categoryProducts;
+    },
+    getCategoryProductsStatus(): string {
+      return this.categoryProductsStatus;
+    }
+  },
   actions: {
     async fetchCategories() {
-      this.categoriesStatus = STATUS.LOADING;
+      //this.categoriesStatus = STATUS.LOADING;
+      //const categories = computed(() => categorieStore.categories);
       try {
         const response = await fetch(`${BASE_URL}products/categories`);
         //console.log("Response Status:", response.status);
