@@ -14,5 +14,12 @@ module.exports = {
   },
   rules: {
     "vue/multi-word-component-names": 0
-  }
+  },
+  "prefer-const": [
+    "error",
+    {
+      destructuring: "any",
+      ignoreReadBeforeAssign: false
+    }
+  ]
 };

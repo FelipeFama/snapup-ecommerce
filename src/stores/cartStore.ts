@@ -15,15 +15,33 @@ interface CartState {
   totalAmount: number;
   isCartMessageOn: boolean;
 }
+//Add localStorage data
+const fetchFromLocalStorage = (): CartItem[] => {
+  let cart = localStorage.getItem("cart");
+  console.log(cart);
+  if (cart) {
+    return JSON.parse(cart);
+  } else {
+    return [];
+  }
+};
+
+const storeInLocalStorage = (data: CartItem[]) => {
+  localStorage.setItem("cart", JSON.stringify(data));
+};
 
 export const useCartStore = defineStore("cart", {
   state: (): CartState => ({
-    carts: [],
+    carts: fetchFromLocalStorage(),
     itemsCount: 0,
     totalAmount: 0,
     isCartMessageOn: false
   }),
-
+  getters: {
+    getAllCarts(): CartItem[] {
+      return this.carts;
+    }
+  },
   actions: {
     addToCart(payload: CartItem) {
       const isItemInCart = this.carts.find((item) => item.id === payload.id);
@@ -45,6 +63,14 @@ export const useCartStore = defineStore("cart", {
       } else {
         this.carts.push(payload);
       }
+      //Update totals
+      storeInLocalStorage(this.carts);
+    },
+    setCartMessageOn() {
+      this.isCartMessageOn = true;
+    },
+    setCartMessageOff() {
+      this.isCartMessageOn = false;
     }
   }
 });

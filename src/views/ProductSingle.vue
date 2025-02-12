@@ -161,7 +161,7 @@ const decreaseQty = () => {
 // Add to Cart Handler
 const addToCartHandler = (product: any) => {
   // Calculate discounted price
-  const discountedPrice = product.price - (product.price * (product.discountPercentage / 100));
+  const discountedPrice = product.price - product.price * (product.discountPercentage / 100);
   // Calculate total price based on quantity
   const totalPrice = quantity.value * discountedPrice;
 
@@ -172,6 +172,8 @@ const addToCartHandler = (product: any) => {
     discountedPrice,
     totalPrice
   });
+  cartStore.setCartMessageOff();
+  cartStore.setCartMessageOn();
 };
 </script>
 
