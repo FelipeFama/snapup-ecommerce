@@ -7,7 +7,7 @@
   </div>
 </template>
 
-<script lang lang="ts">
+<script lang="ts">
 import { correct } from "@/utils/images";
 
 export default {

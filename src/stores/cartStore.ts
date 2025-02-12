@@ -71,8 +71,13 @@ export const useCartStore = defineStore("cart", {
     },
     setCartMessageOn() {
       this.isCartMessageOn = true;
+      // Optionally auto-hide after delay
+      setTimeout(() => {
+        this.setCartMessageOff();
+      }, 2000);
     },
     setCartMessageOff() {
+      //console.log("Calling setCartMessageOff()..."); // Debug
       this.isCartMessageOn = false;
     }
   }

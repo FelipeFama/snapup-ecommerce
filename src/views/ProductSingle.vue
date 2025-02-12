@@ -110,7 +110,7 @@
       </div>
     </section>
   </main>
-  
+  <CartMessage v-if="cartMessageStatus" />
 </template>
 
 <script setup lang="ts">
@@ -121,6 +121,7 @@ import Loader from "@/components/Loader.vue";
 import { useRoute } from "vue-router";
 import { computed, onMounted, ref } from "vue";
 import { useCartStore } from "@/stores/cartStore";
+import CartMessage from "@/components/CartMessage.vue";
 //import type { IProducts } from "@/types/IProducts";
 
 const route = useRoute();
@@ -132,15 +133,30 @@ const product = computed(() => productStore.productSingle);
 const productStatus = computed(() => productStore.productSingleStatus);
 const quantity = ref(1);
 const cartMessageStatus = computed(() => cartStore.getCartMessageStatus);
-
+console.log(cartMessageStatus.value);
 onMounted(async () => {
   productStore.fetchProductSingle(id);
-
-  if (cartMessageStatus) {
+//Is part of code using test auto-hide 
+/*
+watch(
+  () => cartMessageStatus,
+  () => {
+    if (cartMessageStatus) {
+      setTimeout(() => {
+        cartStore.setCartMessageOff();
+        console.log(cartMessageStatus);
+      }, 2000);
+    }
+  }
+);
+*/
+  /*
+  if (cartMessageStatus.value) {
     setTimeout(() => {
       cartStore.setCartMessageOff();
     }, 2000);
   }
+  */
 });
 
 const thumbItems = computed(() => {
