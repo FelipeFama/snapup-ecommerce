@@ -18,7 +18,7 @@ interface CartState {
 //Add localStorage data
 const fetchFromLocalStorage = (): CartItem[] => {
   let cart = localStorage.getItem("cart");
-  console.log(cart);
+  //console.log(cart);
   if (cart) {
     return JSON.parse(cart);
   } else {
@@ -40,6 +40,9 @@ export const useCartStore = defineStore("cart", {
   getters: {
     getAllCarts(): CartItem[] {
       return this.carts;
+    },
+    getCartMessageStatus(): boolean {
+      return this.isCartMessageOn;
     }
   },
   actions: {

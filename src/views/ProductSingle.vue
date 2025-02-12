@@ -110,6 +110,7 @@
       </div>
     </section>
   </main>
+  
 </template>
 
 <script setup lang="ts">
@@ -130,9 +131,16 @@ const cartStore = useCartStore();
 const product = computed(() => productStore.productSingle);
 const productStatus = computed(() => productStore.productSingleStatus);
 const quantity = ref(1);
+const cartMessageStatus = computed(() => cartStore.getCartMessageStatus);
 
 onMounted(async () => {
   productStore.fetchProductSingle(id);
+
+  if (cartMessageStatus) {
+    setTimeout(() => {
+      cartStore.setCartMessageOff();
+    }, 2000);
+  }
 });
 
 const thumbItems = computed(() => {
@@ -172,7 +180,7 @@ const addToCartHandler = (product: any) => {
     discountedPrice,
     totalPrice
   });
-  cartStore.setCartMessageOff();
+
   cartStore.setCartMessageOn();
 };
 </script>
