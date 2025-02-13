@@ -122,7 +122,7 @@ import { useRoute } from "vue-router";
 import { computed, onMounted, ref } from "vue";
 import { useCartStore } from "@/stores/cartStore";
 import CartMessage from "@/components/CartMessage.vue";
-//import type { IProducts } from "@/types/IProducts";
+import type { IProducts } from "@/types/IProducts";
 
 const route = useRoute();
 
@@ -136,8 +136,8 @@ const cartMessageStatus = computed(() => cartStore.getCartMessageStatus);
 console.log(cartMessageStatus.value);
 onMounted(async () => {
   productStore.fetchProductSingle(id);
-//Is part of code using test auto-hide 
-/*
+  //Is part of code using test auto-hide
+  /*
 watch(
   () => cartMessageStatus,
   () => {
@@ -183,7 +183,7 @@ const decreaseQty = () => {
 };
 
 // Add to Cart Handler
-const addToCartHandler = (product: any) => {
+const addToCartHandler = (product: IProducts) => {
   // Calculate discounted price
   const discountedPrice = product.price - product.price * (product.discountPercentage / 100);
   // Calculate total price based on quantity
