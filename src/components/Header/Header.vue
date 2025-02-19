@@ -65,27 +65,9 @@
 </template>
 
 <script setup lang="ts">
-import Navbar from "./Navbar.vue";
+import Navbar from "../Navbar.vue";
 </script>
 
 <style lang="scss" scoped>
-@import "../assets/styles/main.scss";
-
-.header {
-  background: rgb(249, 78, 48);
-  background: linear-gradient(180deg, rgba(249, 78, 48, 1) 0%, rgba(255, 100, 51, 1) 100%);
-
-  .header-cnt-top {
-    border-bottom: 1px solid adjust-color($clr-orange, $lightness: 10%);
-  }
-
-  @media screen and (max-width: 992px) {
-    .header-cnt-top {
-      flex-direction: column;
-      .header-cnt-top-l {
-        margin-bottom: 4px;
-      }
-    }
-  }
-}
+@import "./Header.module.scss";
 </style>

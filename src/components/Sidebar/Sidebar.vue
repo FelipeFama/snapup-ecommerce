@@ -1,0 +1,39 @@
+<template>
+  <aside :class="['sidebar', { 'hide-sidebar': isSidebarOn }]">
+    <button aria-label="sidebar" type="button" class="sidebar-hide-btn" @click="setSidebarOff">
+      <i class="bi bi-x"></i>
+    </button>
+    <div class="sidebar-cnt">
+      <div class="cat-title fs-5 text-uppercase fw-6 ls-1h">All Categories</div>
+      <ul class="cat-list">
+        <li v-for="(category, idx) in categories" :key="idx">
+          <router-link :to="`/category/${category.slug}`" class="cat-list-link text-capitalize">
+            {{ category.name.replace("-", "") }}
+          </router-link>
+        </li>
+      </ul>
+    </div>
+  </aside>
+</template>
+
+<script setup lang="ts">
+import { useSidebarStore } from "@/stores/sidebarStore";
+import { useCategoryStore } from "@/stores/categoryStore";
+import { computed, onMounted } from "vue";
+
+const sidebarStore = useSidebarStore();
+const categoryStore = useCategoryStore();
+
+const isSidebarOn = computed(() => sidebarStore.isSidebarOn);
+const setSidebarOff = sidebarStore.setSidebarOff;
+
+onMounted(() => {
+  categoryStore.fetchCategories();
+});
+
+const categories = computed(() => categoryStore.categories);
+</script>
+
+<style lang="scss" scoped>
+@import "./Sidebar.module.scss";
+</style>

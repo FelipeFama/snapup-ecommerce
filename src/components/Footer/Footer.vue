@@ -18,11 +18,5 @@
 <script setup lang="ts"></script>
 
 <style lang="scss" scoped>
-@import "../assets/styles/main.scss";
-
-.footer {
-  .copyright-text {
-    margin-top: 0.7rem;
-  }
-}
+@import "./Footer.module.scss";
 </style>
