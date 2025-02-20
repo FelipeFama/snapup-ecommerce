@@ -81,21 +81,5 @@ const categoryProducts = computed<IProducts[][]>(() => {
 </script>
 
 <style lang="scss" scoped>
-@import "../assets/styles/main.scss";
-
-.slider-wrapper {
-  margin: 32px 0;
-}
-.main-content {
-  min-height: 100vh;
-}
-.categories {
-  .categories-item {
-    margin-bottom: 4.8rem !important;
-
-    .title-md {
-      margin-bottom: 2.8rem;
-    }
-  }
-}
+@import "./Home.module.scss";
 </style>

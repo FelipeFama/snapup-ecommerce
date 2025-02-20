@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router";
-import Home from "../views/Home.vue";
+import Home from "../views/Home/Home.vue";
 
 export const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -14,25 +14,25 @@ export const router = createRouter({
     {
       path: "/product/:id",
       name: "product",
-      component: () => import("@/views/ProductSingle.vue")
+      component: () => import("@/views/ProductSingle/ProductSingle.vue")
     },
     // category wise product listing route
     {
       path: "/category/:category",
       name: "category",
-      component: () => import("@/views/CategoryProduct.vue")
+      component: () => import("@/views/CategoryProduct/CategoryProduct.vue")
     },
     // cart
     {
       path: "/cart",
       name: "cart",
-      component: () => import("@/views/Cart.vue")
+      component: () => import("@/views/Cart/Cart.vue")
     },
     // searched products
     {
       path: "/search/:searchTerm",
       name: "search",
-      component: () => import("@/views/Search.vue")
+      component: () => import("@/views/Search/Search.vue")
     }
   ]
 });
