@@ -31,10 +31,5 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-.slider {
-  .slider-item {
-    max-height: 300px;
-    width: 100%;
-  }
-}
+@import "./HeaderSlider.module.scss";
 </style>

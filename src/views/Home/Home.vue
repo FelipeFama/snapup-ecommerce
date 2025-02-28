@@ -33,9 +33,9 @@
 </template>
 
 <script setup lang="ts">
-import HeaderSlider from "@/components/HeaderSlider.vue";
-import Loader from "@/components/Loader.vue";
-import ProductList from "@/components/ProductList.vue";
+import HeaderSlider from "@/components/HeaderSlider/HeaderSlider.vue";
+import Loader from "@/components/Loader/Loader.vue";
+import ProductList from "@/components/ProductList/ProductList.vue";
 import { useCategoryStore } from "@/stores/categoryStore";
 import { useProductStore } from "@/stores/productStore";
 import type { IProducts } from "@/types/IProducts";

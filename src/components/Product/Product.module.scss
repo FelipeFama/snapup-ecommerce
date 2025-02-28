@@ -1,47 +1,4 @@
-<template>
-  <router-link :to="`/product/${product?.id}`" :key="product?.id" class="product-item bg-white">
-    <aside class="category">{{ product?.category }}</aside>
-    <figure class="product-item-img">
-      <img class="img-cover" :src="product?.images[0]" :alt="product?.title" />
-    </figure>
-    <article class="product-item-info fs-6">
-      <section class="brand">
-        <span>Brand: </span>
-        <span class="fw-7">{{ product?.brand || product?.category }}</span>
-      </section>
-      <p class="title py-2">{{ product?.title }}</p>
-      <section class="price d-flex align-items-center justify-content-center">
-        <span class="old-price">{{ formatPrice(product?.price) }}</span>
-        <span class="new-price">{{ formatPrice(product?.discountedPrice) }}</span>
-        <span class="discount fw-6">({{ product?.discountPercentage }}% Off)</span>
-      </section>
-    </article>
-  </router-link>
-</template>
-
-<script lang="ts">
-import { defineComponent, type PropType } from "vue";
-import { formatPrice } from "@/utils/helpers";
-import type { IProducts } from "@/types/IProducts";
-
-export default defineComponent({
-  name: "Product",
-  props: {
-    product: {
-      type: Object as PropType<IProducts>,
-      required: true
-    }
-  },
-  setup() {
-    return {
-      formatPrice
-    };
-  }
-});
-</script>
-
-<style lang="scss" scoped>
-@import "../assets/styles/main.scss";
+@import "../../assets/styles/main.scss";
 
 .product-item {
   position: relative;
@@ -143,4 +100,3 @@ export default defineComponent({
       rgba(0, 0, 0, 0.1) 0px 1px 20px -1px;
   }
 }
-</style>

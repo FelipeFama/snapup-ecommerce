@@ -19,11 +19,5 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import "../assets/styles/main.scss";
-
-.loader {
-  img {
-    width: 80px;
-  }
-}
+@import "./Loader.module.scss";
 </style>

@@ -117,11 +117,11 @@
 import { useProductStore } from "@/stores/productStore";
 import { STATUS } from "@/utils/status";
 import { formatPrice } from "@/utils/helpers";
-import Loader from "@/components/Loader.vue";
+import Loader from "@/components/Loader/Loader.vue";
 import { useRoute } from "vue-router";
 import { computed, onMounted, ref } from "vue";
 import { useCartStore } from "@/stores/cartStore";
-import CartMessage from "@/components/CartMessage.vue";
+import CartMessage from "@/components/CartMessage/CartMessage.vue";
 import type { IProducts } from "@/types/IProducts";
 
 const route = useRoute();

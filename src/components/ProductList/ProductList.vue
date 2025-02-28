@@ -6,7 +6,7 @@
 
 <script lang="ts">
 import { computed, defineComponent } from "vue";
-import Product from "@/components/Product.vue";
+import Product from "@/components/Product/Product.vue";
 import type { IProducts } from "@/types/IProducts";
 
 export default defineComponent({
@@ -36,26 +36,5 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-@import "../assets/styles/main.scss";
-
-.product-lists {
-  row-gap: 2rem;
-
-  @media screen and (min-width: 576px) {
-    grid-template-columns: repeat(2, 1fr);
-    column-gap: 1.4rem;
-  }
-
-  @media screen and (min-width: 768px) {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  @media screen and (min-width: 1200px) {
-    grid-template-columns: repeat(4, 1fr);
-  }
-
-  @media screen and (min-width: 1400px) {
-    grid-template-columns: repeat(5, 1fr);
-  }
-}
+@import "./ProductList.modules.scss";
 </style>
