@@ -10,7 +10,7 @@
         v-for="(img, index) in sliderImgs"
         :key="index"
         :class="['carousel-item slider-item', { active: index === 0 }]"
-        data-bs-interval="2000"
+        data-bs-interval="1000"
       >
         <img :src="img" class="d-block" alt="slider image" />
       </figure>
