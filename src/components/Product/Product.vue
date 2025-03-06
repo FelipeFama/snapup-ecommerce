@@ -7,13 +7,13 @@
     <article class="product-item-info fs-6">
       <section class="brand">
         <span>Brand: </span>
-        <span class="fw-7">{{ product?.brand || product?.category }}</span>
+        <span class="fw-medium">{{ product?.brand || product?.category }}</span>
       </section>
       <p class="title py-2">{{ product?.title }}</p>
       <section class="price d-flex align-items-center justify-content-center">
         <span class="old-price">{{ formatPrice(product?.price) }}</span>
         <span class="new-price">{{ formatPrice(product?.discountedPrice) }}</span>
-        <span class="discount fw-6">({{ product?.discountPercentage }}% Off)</span>
+        <span class="discount">({{ product?.discountPercentage }}% Off)</span>
       </section>
     </article>
   </router-link>

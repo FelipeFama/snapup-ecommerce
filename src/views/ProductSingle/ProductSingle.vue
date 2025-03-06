@@ -27,21 +27,21 @@
 
           <section class="product-single-r">
             <article class="product-details font-manrope">
-              <h3 class="title fs-20 fw-5">{{ product?.title }}</h3>
-              <p class="para fw-3 fs-15">{{ product?.description }}</p>
-              <aside class="info d-flex align-items-center fs-14">
+              <h3 class="title fs-1 fw-medium">{{ product?.title }}</h3>
+              <p class="para fw-normal fs-6">{{ product?.description }}</p>
+              <aside class="info d-flex align-items-center fs-6">
                 <div class="rating d-flex align-items-center">
-                  <h6 class="text-orange fw-5">Rating:</h6>
+                  <h6 class="text-orange fw-medium">Rating:</h6>
                   <span class="mx-1">{{ product?.rating }}</span>
                 </div>
                 <div class="vert-line"></div>
                 <div class="brand d-flex align-items-center">
-                  <h6 class="text-orange fw-5">Brand:</h6>
+                  <h6 class="text-orange fw-medium">Brand:</h6>
                   <span class="mx-1">{{ product?.brand || product?.category }}</span>
                 </div>
                 <div class="vert-line"></div>
                 <div class="brand d-flex align-items-center">
-                  <h6 class="text-orange fw-5">Category:</h6>
+                  <h6 class="text-orange fw-medium">Category:</h6>
                   <span class="mx-1 text-capitalize">
                     {{ product?.category ? product?.category.replace("-", " ") : "" }}
                   </span>
@@ -53,13 +53,13 @@
                   <p class="old-price text-gray">
                     {{ formatPrice(product?.price) }}
                   </p>
-                  <p class="fs-14 mx-2 text-dark">Inclusive of all taxes</p>
+                  <p class="fs-6 mx-2 text-dark">Inclusive of all taxes</p>
                 </div>
                 <div class="d-flex align-items-center my-1">
-                  <p class="new-price fw-5 font-poppins fs-24 text-orange">
+                  <p class="new-price fw-normal font-poppins fs-1 text-orange">
                     {{ formatPrice(discountedPrice) }}
                   </p>
-                  <p class="discount bg-orange fs-13 text-white fw-6 font-poppins">
+                  <p class="discount bg-orange fs-6 text-white fw-normal font-poppins">
                     {{ product?.discountPercentage }}% OFF
                   </p>
                 </div>
@@ -86,7 +86,7 @@
                 </div>
                 <div
                   v-if="outOfStock"
-                  class="qty-error text-uppercase bg-danger text-white fs-12 ls-1 mx-2 fw-5"
+                  class="qty-error text-uppercase bg-danger text-white fs-6 ls-1 mx-2 fw-medium"
                 >
                   out of stock
                 </div>
