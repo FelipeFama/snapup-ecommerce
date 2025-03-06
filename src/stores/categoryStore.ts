@@ -5,34 +5,44 @@ import type { ICategory } from "@/types/IFilters";
 
 export const useCategoryStore = defineStore("category", {
   state: () => ({
-    categories: [] as ICategory[],  
+    categories: [] as ICategory[],
     categoriesStatus: STATUS.IDLE as string,
     categoryProducts: [] as ICategory[],
     categoryProductsStatus: STATUS.IDLE as string
   }),
   getters: {
-    getCategories(): ICategory[] {
-      return this.categories;
+    getCategories(state): ICategory[] {
+      return state.categories;
     },
     getCategoriesStatus(): string {
-      return this.categoriesStatus = STATUS.LOADING;
+      return this.categoriesStatus;
     },
-    getCategoryProducts(): ICategory[] {
-      return this.categoryProducts;
+    getCategoryProducts(state): ICategory[] {
+      return state.categoryProducts;
     },
-    getCategoryProductsStatus(): string {
-      return this.categoryProductsStatus;
+    getCategoryProductsStatus(state): string {
+      return state.categoryProductsStatus;
+    },
+    isLoading(state): boolean {
+      return (
+        state.categoriesStatus === STATUS.LOADING || state.categoryProductsStatus === STATUS.LOADING
+      );
+    },
+    hasError(state): boolean {
+      return (
+        state.categoriesStatus === STATUS.FAILED || state.categoryProductsStatus === STATUS.FAILED
+      );
     }
   },
   actions: {
     async fetchCategories() {
-      //this.categoriesStatus = STATUS.LOADING;
-      //const categories = computed(() => categorieStore.categories);
+      this.categoriesStatus = STATUS.LOADING;
       try {
         const response = await fetch(`${BASE_URL}products/categories`);
-        //console.log("Response Status:", response.status);
-        this.categories = await response.json();
+        const data = await response.json();
+        this.categories = data;
         this.categoriesStatus = STATUS.SUCCEEDED;
+        //console.log("Response Status:", response.status);
       } catch (error) {
         this.categoriesStatus = STATUS.FAILED;
       }
@@ -43,7 +53,7 @@ export const useCategoryStore = defineStore("category", {
         const response = await fetch(`${BASE_URL}products/category/${category}`);
         const data = await response.json();
         //console.log("Fetched Categories:", data);
-        this.categoryProducts = data.products;
+        this.categoryProducts = data;
         this.categoryProductsStatus = STATUS.SUCCEEDED;
       } catch (error) {
         this.categoryProductsStatus = STATUS.FAILED;

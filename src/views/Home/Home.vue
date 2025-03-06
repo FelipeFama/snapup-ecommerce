@@ -50,8 +50,7 @@ onMounted(async () => {
   productStore.fetchProducts(50);
 });
 
-//const categories = computed(() => categorieStore.categories);
-const categories = categorieStore.categories;
+const categories = computed(() => categorieStore.categories);
 const products = computed(() => productStore.products);
 const productStatus = computed(() => productStore.productsStatus);
 
@@ -74,7 +73,7 @@ watch(products, (newProducts) => {
 });
 
 const categoryProducts = computed<IProducts[][]>(() => {
-  return categories
+  return categories.value
     .slice(0, 4)
     .map((category) => products.value.filter((product) => product.category === category.slug));
 });
