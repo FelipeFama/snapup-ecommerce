@@ -2,7 +2,7 @@
 import { defineStore } from "pinia";
 
 // Define interfaces
-interface CartItem {
+export interface CartItem {
   id: number;
   quantity: number;
   price: number;
@@ -10,7 +10,7 @@ interface CartItem {
   discountedPrice: number;
 }
 
-interface CartState {
+export interface CartState {
   carts: CartItem[];
   itemsCount: number;
   totalAmount: number;
