@@ -30,7 +30,7 @@
             </router-link>
           </div>
         </article>
-        <ul class="navbar-nav d-flex align-items-center fs-6 fw-normal font-manrope">
+        <ul class="navbar-nav d-none d-lg-flex align-items-center fs-6 fw-normal font-manrope">
           <li v-for="(category, idx) in categories.slice(0, 8)" :key="idx" class="nav-item no-wrap">
             <router-link :to="`/category/${category.slug}`" class="nav-link text-capitalize">
               {{ category.name.replace("-", "") }}
