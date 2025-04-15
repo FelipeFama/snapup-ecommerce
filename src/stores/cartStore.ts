@@ -1,23 +1,8 @@
-// stores/cartStore.ts
+import type { ICartItems, ICartState } from "@/types/ICarts";
 import { defineStore } from "pinia";
 
-// Define interfaces
-export interface CartItem {
-  id: number;
-  quantity: number;
-  price: number;
-  totalPrice: number;
-  discountedPrice: number;
-}
-
-export interface CartState {
-  carts: CartItem[];
-  itemsCount: number;
-  totalAmount: number;
-  isCartMessageOn: boolean;
-}
 //Add localStorage data
-const fetchFromLocalStorage = (): CartItem[] => {
+const fetchFromLocalStorage = (): ICartItems[] => {
   let cart = localStorage.getItem("cart");
   //console.log(cart);
   if (cart) {
@@ -27,19 +12,19 @@ const fetchFromLocalStorage = (): CartItem[] => {
   }
 };
 
-const storeInLocalStorage = (data: CartItem[]) => {
+const storeInLocalStorage = (data: ICartItems[]) => {
   localStorage.setItem("cart", JSON.stringify(data));
 };
 
 export const useCartStore = defineStore("cart", {
-  state: (): CartState => ({
+  state: (): ICartState => ({
     carts: fetchFromLocalStorage(),
     itemsCount: 0,
     totalAmount: 0,
     isCartMessageOn: false
   }),
   getters: {
-    getAllCarts(): CartItem[] {
+    getAllCarts(): ICartItems[] {
       return this.carts;
     },
     getCartMessageStatus(): boolean {
@@ -47,7 +32,7 @@ export const useCartStore = defineStore("cart", {
     }
   },
   actions: {
-    addToCart(payload: CartItem) {
+    addToCart(payload: ICartItems) {
       const isItemInCart = this.carts.find((item) => item.id === payload.id);
 
       if (isItemInCart) {
