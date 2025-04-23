@@ -4,4 +4,6 @@
   </main>
 </template>
 
-<style></style>
+<style lang="scss" scoped>
+@import "./Cart.module.scss";
+</style>
