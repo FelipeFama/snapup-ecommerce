@@ -55,6 +55,40 @@ export const useCartStore = defineStore("cart", {
       //Update totals
       storeInLocalStorage(this.carts);
     },
+    removeFromCart(id: ICartItems["id"]) {
+      this.carts = this.carts.filter((item) => item.id !== id);
+      storeInLocalStorage(this.carts);
+    },
+    clearCart() {
+      this.carts = [];
+      storeInLocalStorage(this.carts);
+    },
+    getCartTotal() {
+      this.totalAmount = this.carts.reduce((sum, item) => sum + item.totalPrice, 0);
+      this.itemsCount = this.carts.length;
+    },
+    toggleCartQty(payload: { id: ICartItems["id"]; type: string }) {
+      this.carts = this.carts.map((item) => {
+        if (item.id === payload.id) {
+          let quantity = item.quantity;
+          if (payload.type === "INC") {
+            quantity = Math.min(quantity + 1, item.stock);
+          } else if (payload.type === "DEC") {
+            quantity = Math.max(quantity - 1, 1);
+          }
+          return {
+            ...item,
+            quantity,
+            totalPrice: quantity * item.discountedPrice
+          };
+        }
+        return item;
+      });
+
+      storeInLocalStorage(this.carts);
+      this.getCartTotal();
+    },
+
     setCartMessageOn() {
       this.isCartMessageOn = true;
       // Optionally auto-hide after delay
