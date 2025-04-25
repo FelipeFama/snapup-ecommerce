@@ -41,7 +41,7 @@
       <aside class="navbar-cart d-flex align-items-center">
         <router-link to="/" class="cart-btn">
           <i className="bi bi-cart"></i>
-          <div className="cart-items-value">0</div>
+          <div className="cart-items-value">{{ itemsCount }}</div>
         </router-link>
       </aside>
     </section>
@@ -51,12 +51,34 @@
 <script setup lang="ts">
 import { useSidebarStore } from "@/stores/sidebarStore";
 import { useCategoryStore } from "@/stores/categoryStore";
-import { computed, onMounted } from "vue";
+import { computed, onMounted, watch } from "vue";
+import { useCartStore } from "@/stores/cartStore";
+import { storeToRefs } from "pinia";
 
 // Access the sidebar store
 const sidebarStore = useSidebarStore();
 const categoryStore = useCategoryStore();
+const cartStore = useCartStore();
+const { carts, itemsCount } = storeToRefs(cartStore);
+/*
+onMounted(() => {
+  cartStore.getCartTotal(carts.value);
+});
+*/
+watch(
+  () => cartStore.carts,
+  () => {
+    cartStore.getCartTotal(carts.value);
+  },
+  { deep: true, immediate: true }
+);
+/*
+  watch(carts, () => {
+    cartStore.getCartTotal(carts.value);
+  });
+*/
 
+//console.log(itemsCount.value);
 // Method to toggle sidebar and log its status
 const setSideBarOn = () => {
   // Update the state (set isSidebarOn to true)

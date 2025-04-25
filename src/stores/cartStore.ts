@@ -63,7 +63,7 @@ export const useCartStore = defineStore("cart", {
       this.carts = [];
       storeInLocalStorage(this.carts);
     },
-    getCartTotal() {
+    getCartTotal(this: ICartState, cartItems: ICartItems[] = this.carts) {
       this.totalAmount = this.carts.reduce((sum, item) => sum + item.totalPrice, 0);
       this.itemsCount = this.carts.length;
     },
