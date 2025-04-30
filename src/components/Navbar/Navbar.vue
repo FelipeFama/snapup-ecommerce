@@ -42,6 +42,7 @@
         <router-link to="/" class="cart-btn">
           <i className="bi bi-cart"></i>
           <div className="cart-items-value">{{ itemsCount }}</div>
+          <CartModal :carts="carts" />
         </router-link>
       </aside>
     </section>
@@ -54,6 +55,7 @@ import { useCategoryStore } from "@/stores/categoryStore";
 import { computed, onMounted, watch } from "vue";
 import { useCartStore } from "@/stores/cartStore";
 import { storeToRefs } from "pinia";
+import CartModal from "@/components/CartModal/CartModal.vue";
 
 // Access the sidebar store
 const sidebarStore = useSidebarStore();
