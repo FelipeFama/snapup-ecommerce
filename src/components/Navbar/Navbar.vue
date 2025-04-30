@@ -39,7 +39,7 @@
         </ul>
       </aside>
       <aside class="navbar-cart d-flex align-items-center">
-        <router-link to="/" class="cart-btn">
+        <router-link to="/cart" class="cart-btn">
           <i className="bi bi-cart"></i>
           <div className="cart-items-value">{{ itemsCount }}</div>
           <CartModal :carts="carts" />
