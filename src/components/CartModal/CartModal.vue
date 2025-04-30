@@ -1,34 +1,34 @@
 <template>
-  <div class="cart-modal">
-    <h5 class="cart-modal-title fw-5 fs-15 font-manrope text-center">Recently Added Products</h5>
+  <section class="cart-modal">
+    <h5 class="cart-modal-title fw-medium fs-5 font-manrope text-center">Recently Added Products</h5>
 
     <div v-if="carts?.length > 0" class="cart-modal-list grid">
-      <div
+      <article
         v-for="cart in carts"
         :key="cart.id"
-        class="cart-modal-item grid align-center font-manrope py-2"
+        class="cart-modal-item grid align-items-center font-manrope py-2"
       >
         <figure class="cart-modal-item-img">
           <img :src="cart.thumbnail" alt="" class="img-cover" />
         </figure>
-        <div class="cart-modal-item-title fs-13 font-manrope text-capitalize">
+        <div class="cart-modal-item-title fs-3 font-manrope text-capitalize">
           {{ cart.title }}
         </div>
-        <div class="cart-modal-item-price text-orange fs-14 fw-6">
+        <div class="cart-modal-item-price text-orange fs-4 fw-semibold">
           {{ formatPrice(cart.discountedPrice) }}
         </div>
-      </div>
+      </article>
 
-      <div class="text-capitalize view-cart-btn bg-orange fs-15 font-manrope text-center">
+      <p class="text-capitalize view-cart-btn bg-orange fs-5 font-manrope text-center w-100">
         view my shopping cart
-      </div>
+      </p>
     </div>
 
-    <div v-else class="flex flex-column align-center justify-center cart-modal-empty">
+    <figure v-else class="d-flex flex-column align-content-center justify-content-center cart-modal-empty">
       <img :src="shopping_cart" alt="shopping cart" />
-      <h6 class="text-dark fw-4">No products yet</h6>
-    </div>
-  </div>
+      <h6 class="text-dark fw-normal">No products yet</h6>
+    </figure>
+  </section>
 </template>
 
 <script lang="ts">
