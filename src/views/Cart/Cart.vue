@@ -31,7 +31,7 @@
             </aside>
           </article>
         </section>
-        <section class="cart-cbodhy bg-white">
+        <section class="cart-cbody bg-white">
           <article class="cart-ctr py-4" v-for="(cart, idx) in carts" :key="cart.id">
             <aside class="cart-ctd">
               <span class="cart-ctxt">{{ idx + 1 }}</span>
