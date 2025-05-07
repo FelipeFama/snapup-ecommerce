@@ -1,9 +1,13 @@
 <template>
   <main v-if="carts.length === 0" class="container mt-5">
-    <article class="empty-cart d-flex justify-content-center align-items-center flex-column font-manrope">
+    <article
+      class="empty-cart d-flex justify-content-center align-items-center flex-column font-manrope"
+    >
       <img :src="shopping_cart" alt="shopping cart" />
       <span class="fw-semibold fs-5 text-gray">Your shopping cart is empty.</span>
-      <RouterLink to="/" class="shopping-btn bg-orange text-white fw-medium">Go shopping Now</RouterLink>
+      <RouterLink to="/" class="shopping-btn bg-orange text-white fw-medium"
+        >Go shopping Now</RouterLink
+      >
     </article>
   </main>
   <main v-else class="cart bg-whitesmoke">
@@ -77,6 +81,33 @@
                 Delete
               </button>
             </aside>
+          </article>
+          <article
+            className="cart-cfoot d-flex align-items-start justify-content-between py-3 bg-white"
+          >
+            <div className="cart-cfoot-l">
+              <button
+                type="button"
+                className="clear-cart-btn text-danger fs-5 text-uppercase fw-bold"
+                @click="cartStore.clearCart"
+              >
+                <i class="bi bi-trash-fill"></i>
+                <span className="mx-1">Clear Cart</span>
+              </button>
+            </div>
+
+            <div className="cart-cfoot-r flex flex-column justify-end">
+              <div className="total-txt flex align-center justify-end">
+                <div className="font-manrope fw-semibold">Total ({{ itemsCount }}) items:</div>
+                <span className="text-orange fs-5 mx-2 fw-bold">{{
+                  formatPrice(totalAmount)
+                }}</span>
+              </div>
+
+              <button type="button" className="checkout-btn text-white bg-orange fs-6">
+                Check Out
+              </button>
+            </div>
           </article>
         </section>
       </section>
