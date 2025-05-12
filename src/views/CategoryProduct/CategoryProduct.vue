@@ -1,7 +1,11 @@
 <template>
-  <main class="about">
-    <h1>category page</h1>
+  <main class="cat-products py-5 bg-whitesmoke">
+    <section class="container">
+      test
+    </section>
   </main>
 </template>
 
-<style></style>
+<style lang="scss" scoped>
+@import "./CategoryProduct.module.scss";
+</style>
