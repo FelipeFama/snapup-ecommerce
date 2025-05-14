@@ -53,7 +53,7 @@ export const useCategoryStore = defineStore("category", {
         const response = await fetch(`${BASE_URL}products/category/${category}`);
         const data = await response.json();
         //console.log("Fetched Categories:", data);
-        this.categoryProducts = data;
+        this.categoryProducts = data.products;
         this.categoryProductsStatus = STATUS.SUCCEEDED;
       } catch (error) {
         this.categoryProductsStatus = STATUS.FAILED;
