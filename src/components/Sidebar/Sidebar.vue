@@ -1,12 +1,12 @@
 <template>
-  <aside :class="['sidebar', { 'hide-sidebar': isSidebarOn }]">
+  <aside :class="['sidebar', isSidebarOn ? 'hide-sidebar' : '']">
     <button aria-label="sidebar" type="button" class="sidebar-hide-btn" @click="setSidebarOff">
       <i class="bi bi-x"></i>
     </button>
     <div class="sidebar-cnt">
       <div class="cat-title fs-5 text-uppercase fw-6 ls-1h">All Categories</div>
       <ul class="cat-list">
-        <li v-for="(category, idx) in categories" :key="idx">
+        <li v-for="(category, idx) in categories" :key="idx" @click="setSidebarOff">
           <router-link :to="`/category/${category.slug}`" class="cat-list-link text-capitalize">
             {{ category.name.replace("-", "") }}
           </router-link>
