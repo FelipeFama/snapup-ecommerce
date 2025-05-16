@@ -1,7 +1,11 @@
 <template>
-  <main class="about">
-    <h1>search page</h1>
+  <main>
+    <section class="search-content bg-whitesmoke">
+      search
+    </section>
   </main>
 </template>
 
-<style></style>
+<style lang="scss" scoped>
+@import "./Search.module.scss";
+</style>
