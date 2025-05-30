@@ -20,10 +20,11 @@
               type="text"
               class="form-control fs-6"
               placeholder="Search your preferred items here"
+              @change="handleSearchTerm"
             />
             <router-link
               aria-label="search"
-              to="/"
+              :to="`/search/${searchTerm}`"
               class="text-white search-btn d-flex align-items-center justify-content-center"
             >
               <i class="bi bi-search"></i>
@@ -52,7 +53,7 @@
 <script setup lang="ts">
 import { useSidebarStore } from "@/stores/sidebarStore";
 import { useCategoryStore } from "@/stores/categoryStore";
-import { computed, onMounted, watch } from "vue";
+import { computed, onMounted, ref, watch } from "vue";
 import { useCartStore } from "@/stores/cartStore";
 import { storeToRefs } from "pinia";
 import CartModal from "@/components/CartModal/CartModal.vue";
@@ -62,6 +63,7 @@ const sidebarStore = useSidebarStore();
 const categoryStore = useCategoryStore();
 const cartStore = useCartStore();
 const { carts, itemsCount } = storeToRefs(cartStore);
+const searchTerm = ref("");
 /*
 onMounted(() => {
   cartStore.getCartTotal(carts.value);
@@ -93,6 +95,11 @@ onMounted(() => {
 
 const categories = computed(() => categoryStore.categories);
 //console.log("Categories:", categories);
+
+const handleSearchTerm = (e: Event) => {
+  const target = e.target as HTMLInputElement;
+  searchTerm.value = target.value;
+};
 </script>
 
 <style lang="scss" scoped>
