@@ -1,4 +1,3 @@
-// productStore.ts
 import { defineStore } from "pinia";
 import { BASE_URL } from "@/utils/apiURL";
 import { STATUS } from "@/utils/status";
