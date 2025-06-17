@@ -28,13 +28,17 @@ export const useSearchStore = defineStore("search", {
       try {
         const response = await fetch(`${BASE_URL}products/search?q=${searchTerm}`);
         const data = await response.json();
-        console.log(data);
+        //console.log(data.products);
         this.searchProducts = data.products;
         this.searchProductsStatus = STATUS.SUCCEEDED;
       } catch (error) {
         console.error("Failed to fetch search products:", error);
         this.searchProductsStatus = STATUS.FAILED;
       }
+    },
+    clearSearchResults() {
+      this.searchProducts = [];
+      this.searchProductsStatus = STATUS.IDLE;
     }
   }
 });

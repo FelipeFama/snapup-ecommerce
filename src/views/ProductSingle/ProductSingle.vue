@@ -136,27 +136,6 @@ const cartMessageStatus = computed(() => cartStore.getCartMessageStatus);
 console.log(cartMessageStatus.value);
 onMounted(async () => {
   productStore.fetchProductSingle(id);
-  //Is part of code using test auto-hide
-  /*
-watch(
-  () => cartMessageStatus,
-  () => {
-    if (cartMessageStatus) {
-      setTimeout(() => {
-        cartStore.setCartMessageOff();
-        console.log(cartMessageStatus);
-      }, 2000);
-    }
-  }
-);
-*/
-  /*
-  if (cartMessageStatus.value) {
-    setTimeout(() => {
-      cartStore.setCartMessageOff();
-    }, 2000);
-  }
-  */
 });
 
 const thumbItems = computed(() => {
