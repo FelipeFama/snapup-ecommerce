@@ -11,6 +11,14 @@ import { createPinia } from "pinia";
 //Routes
 import { router } from "./router";
 
+/// Service Worker
+import { registerSW } from "virtual:pwa-register";
+
+if ("serviceWorker" in navigator) {
+  // && !/localhost/.test(window.location)) {
+  registerSW();
+}
+
 import App from "./App.vue";
 
 const app = createApp(App);
