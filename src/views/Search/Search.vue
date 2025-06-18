@@ -7,6 +7,13 @@
             <h3>Search results:</h3>
           </aside>
           <br />
+          <Loader v-if="searchStatus === STATUS.LOADING" />
+          <section v-else-if="searchProducts.length > 0">
+            <ProductList :products="searchProducts" />
+          </section>
+          <section v-else class="fw-5 text-danger py-5" style="min-height: 70vh">
+            <h3>No Products found.</h3>
+          </section>
         </article>
       </div>
     </section>
@@ -18,22 +25,35 @@
 </style>
 
 <script setup lang="ts">
+import Loader from "@/components/Loader/Loader.vue";
+import ProductList from "@/components/ProductList/ProductList.vue";
 import { useSearchStore } from "@/stores/searchStore";
-import { computed, onMounted } from "vue";
+import { STATUS } from "@/utils/status";
+import { computed, onMounted, watch } from "vue";
 import { useRoute } from "vue-router";
 
 const route = useRoute();
-const searchTerm = route.params.searchTerm as string;
 const searchStore = useSearchStore();
 
-const search = computed(() => searchStore.fetchSearchProducts(searchTerm));
+const searchProducts = computed(() => searchStore.searchProducts);
+const searchStatus = computed(() => searchStore.searchProductsStatus);
 
-console.log("Search term:", search.value);
-onMounted(() => {
-  return search.value;
-  /*
+const fetchSearch = async (term: string) => {
   searchStore.clearSearchResults();
-  searchStore.fetchSearchProducts(searchTerm);
-  */
+  await searchStore.fetchSearchProducts(term);
+  //console.log("Search loaded:", searchProducts.value);
+};
+
+// When the component is mounted (first time)
+onMounted(() => {
+  fetchSearch(route.params.searchTerm as string);
 });
+
+// Whenever the parameter changes
+watch(
+  () => route.params.searchTerm,
+  (newTerm) => {
+    fetchSearch(newTerm as string);
+  }
+);
 </script>

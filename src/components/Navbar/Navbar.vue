@@ -24,8 +24,9 @@
             />
             <router-link
               aria-label="search"
-              :to="`/search/${searchTerm}`"
+              :to="searchTerm ? `/search/${searchTerm}` : ''"
               class="text-white search-btn d-flex align-items-center justify-content-center"
+              :class="{ disabled: !searchTerm }"
             >
               <i class="bi bi-search"></i>
             </router-link>
@@ -64,6 +65,7 @@ const categoryStore = useCategoryStore();
 const cartStore = useCartStore();
 const { carts, itemsCount } = storeToRefs(cartStore);
 const searchTerm = ref("");
+
 /*
 onMounted(() => {
   cartStore.getCartTotal(carts.value);
