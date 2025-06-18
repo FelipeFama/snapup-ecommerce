@@ -133,7 +133,7 @@ const product = computed(() => productStore.productSingle);
 const productStatus = computed(() => productStore.productSingleStatus);
 const quantity = ref(1);
 const cartMessageStatus = computed(() => cartStore.getCartMessageStatus);
-console.log(cartMessageStatus.value);
+//console.log(cartMessageStatus.value);
 onMounted(async () => {
   productStore.fetchProductSingle(id);
 });
