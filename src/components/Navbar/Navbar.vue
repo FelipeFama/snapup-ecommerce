@@ -3,7 +3,7 @@
     <section class="navbar-cnt d-flex align-items-center">
       <aside class="brand-and-toggler d-flex align-items-center gap-1">
         <button aria-label="sidebar" class="sidebar-shown-btn text-white p-2" @click="setSideBarOn">
-          <i class="bi bi-list"></i>
+          <i class="bi bi-list bold-icon"></i>
         </button>
         <router-link to="/" class="navbar-brand d-flex align-items-center text-white">
           <span class="navbar-brand-ico">
@@ -32,9 +32,9 @@
             </router-link>
           </div>
         </article>
-        <ul class="navbar-nav d-none d-lg-flex align-items-center fs-6 fw-normal font-manrope">
-          <li v-for="(category, idx) in categories.slice(0, 8)" :key="idx" class="nav-item no-wrap">
-            <router-link :to="`/category/${category.slug}`" class="nav-link text-capitalize">
+        <ul class="navbar-nav d-none d-lg-flex align-items-center fs-5 fw-normal font-manrope">
+          <li v-for="(category, idx) in categories.slice(0, 8)" :key="idx" class="navbar-item no-wrap">
+            <router-link :to="`/category/${category.slug}`" class="navbar-link text-capitalize">
               {{ category.name.replace("-", "") }}
             </router-link>
           </li>

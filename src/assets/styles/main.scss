@@ -81,6 +81,9 @@ select {
   height: 100%;
 }
 
+.bold-icon::before {
+  font-weight: bold !important;
+}
 /* text align and transformation */
 .text {
   &-orange {

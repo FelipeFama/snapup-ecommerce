@@ -50,9 +50,9 @@
       flex-direction: row;
       margin-left: 32px;
       margin-top: 8px;
-      .nav-item {
+      .navbar-item {
         margin-right: 16px;
-        .nav-link {
+        .navbar-link {
           transition: $transition-ease;
           &:hover {
             opacity: 0.95;
